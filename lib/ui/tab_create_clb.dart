@@ -6,6 +6,9 @@ class TabCreateCLB extends StatefulWidget {
   _TabCreateCLB createState() => _TabCreateCLB();
 }
 
+String changedText = 'Tham gia';
+String changedText1 = 'Tham gia';
+
 class _TabCreateCLB extends State<TabCreateCLB> {
   double get radius => null;
 
@@ -37,16 +40,172 @@ class _TabCreateCLB extends State<TabCreateCLB> {
           ),
           body: TabBarView(
             children: [
-              Center(
-                child: Column(
+              ListView(
+                  padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
                   children: [
-                    _buildSearchTextField(),
-                  ],
-                ),
-              ),
-              Padding(
+                    GestureDetector(
+                        child: SafeArea(
+                            child: SingleChildScrollView(
+                                child: Column(children: [
+                                  _buildSearchTextField(),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 1,
+                                          child: Container(
+                                            // padding: EdgeInsets.all(8),
+                                            child: CircleAvatar(
+                                              child: Text("FPT"),
+                                              backgroundColor: Colors.orange,
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(
+                                                'FPT Football Club',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.location_on_sharp,
+                                                    color: Colors.lightGreen,
+                                                  ),
+                                                  Text('Khu CNC quận 9'),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          flex: 4,
+                                        ),
+                                        Expanded(
+                                            child: RaisedButton(
+                                              color: Colors.white,
+                                              onPressed: () {
+                                                setState(() {
+                                                  changedText = 'Chờ chấp thuận';
+                                                });
+                                              },
+                                              child: Container(
+                                                child: Text('${changedText}',
+                                                    style: TextStyle(
+                                                        fontSize: 14, color: Colors.black)),
+                                              ),
+                                            ),
+                                            flex: 3)
+                                      ],
+                                    ),
+                                    decoration: BoxDecoration(
+                                      // borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: Colors.green,
+                                          width: 1,
+                                        ),
+                                        left: BorderSide(
+                                          color: Colors.green,
+                                          width: 1,
+                                        ),
+                                        right: BorderSide(
+                                          color: Colors.green,
+                                          width: 1,
+                                        ),
+                                        top: BorderSide(
+                                          color: Colors.green,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Expanded(
+                                          flex: 1,
+                                          child: Container(
+                                            // padding: EdgeInsets.all(8),
+                                            child: CircleAvatar(
+                                              child: Text("SPKT"),
+                                              backgroundColor: Colors.yellow,
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Text(
+                                                'CLB bóng đá SPKT',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  Icon(
+                                                    Icons.location_on_sharp,
+                                                    color: Colors.lightGreen,
+                                                  ),
+                                                  Text('1 Võ Văn Ngân - Thủ Đức'),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                          flex: 4,
+                                        ),
+                                        Expanded(
+                                            child: RaisedButton(
+                                              color: Colors.white,
+                                              onPressed: () {
+                                                setState(() {
+                                                  changedText1 = 'Chờ chấp thuận';
+                                                });
+                                              },
+                                              child: Container(
+                                                child: Text('${changedText1}',
+                                                    style: TextStyle(
+                                                        fontSize: 14, color: Colors.black)),
+                                              ),
+                                            ),
+                                            flex: 3)
+                                      ],
+                                    ),
+                                    decoration: BoxDecoration(
+                                      // borderRadius: BorderRadius.circular(10),
+                                      color: Colors.white,
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: Colors.green,
+                                          width: 1,
+                                        ),
+                                        left: BorderSide(
+                                          color: Colors.green,
+                                          width: 1,
+                                        ),
+                                        right: BorderSide(
+                                          color: Colors.green,
+                                          width: 1,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]))))
+                  ]),
+              ListView(
                 padding: EdgeInsets.all(19),
-                child: Column(
                   children: [
                     Row(
                       children: [
@@ -228,7 +387,7 @@ class _TabCreateCLB extends State<TabCreateCLB> {
                     ),
                   ],
                 ),
-              ),
+
             ],
           ),
         ));

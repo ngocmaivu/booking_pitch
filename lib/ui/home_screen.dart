@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:sporttt/ui/tab_find_competitor.dart';
 import 'package:sporttt/ui/tab_create_clb.dart';
 import 'package:sporttt/ui/tab_notification.dart';
+import 'package:sporttt/ui/tab_pitch_detail.dart';
 import 'package:sporttt/ui/tab_profile.dart';
+import 'package:sporttt/utils/date_time_picker.dart';
 import './tab_home_screen.dart';
 import '../utils/constant.dart';
 
@@ -29,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         CupertinoTabView returnValue;
         switch (index) {
           case 0:
-            returnValue = _buildTabView(TabHomeScreen());
+            returnValue = _buildTabView(PitchDetail());
             break;
           case 1:
             returnValue = _buildTabView(TabFindCompetitor());

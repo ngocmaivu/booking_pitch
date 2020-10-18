@@ -11,7 +11,7 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
     ),
     activeIcon: Icon(
       Icons.home,
-      color: Colors.lightBlueAccent,
+      color: Colors.lightGreen,
       size: 36,
     ),
   ),
@@ -23,7 +23,7 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
     ),
     activeIcon: Icon(
       Icons.add_circle,
-      color: Colors.lightBlueAccent,
+      color: Colors.lightGreen,
       size: 36,
     ),
   ),
@@ -35,7 +35,7 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
     ),
     activeIcon: Icon(
       Icons.explicit,
-      color: Colors.lightBlueAccent,
+      color: Colors.lightGreen,
       size: 36,
     ),
   ),
@@ -47,7 +47,7 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
     ),
     activeIcon: Icon(
       Icons.notifications,
-      color: Colors.lightBlueAccent,
+      color: Colors.lightGreen,
       size: 36,
     ),
   ),
@@ -59,7 +59,7 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
     ),
     activeIcon: Icon(
       Icons.person,
-      color: Colors.lightBlueAccent,
+      color: Colors.lightGreen,
       size: 36,
     ),
   ),

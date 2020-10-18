@@ -30,25 +30,65 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                       child: Row(
                         children: [
                           Pitch(
-                            namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                            address: 'Phú Nhuận',
+                            namePitch: 'Sân bóng Tiến Phát',
+                            address: 'Quận 9',
                             price: 100000,
-                            rate: 4.5,
-                            local: 10.2,
+                            rate: 4.1,
+                            local: 4.5,
                           ),
                           Pitch(
-                            namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                            address: 'Phú Nhuận',
+                            namePitch: 'Sân bóng đá mini',
+                            address: 'Quận 9',
                             price: 100000,
-                            rate: 4.5,
-                            local: 10.2,
+                            rate: 3.7,
+                            local: 7.2,
                           ),
                           Pitch(
-                              namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                              address: 'Phú Nhuận',
+                              namePitch: 'Sân bóng Trương Văn Thành',
+                              address: 'Quận 9',
                               price: 100000,
-                              rate: 4.5,
-                              local: 10.2),
+                              rate: 3.8,
+                              local: 3.1
+                          ),
+                          Pitch(
+                            namePitch: 'Sân Cỏ Hiệp Phú',
+                            address: 'Quận 9',
+                            price: 100000,
+                            rate: 3.8,
+                            local: 2.4,
+                          ),
+                        ],
+                      ),
+                    ),
+                    BuildGroupTitle(
+                      title: 'Đang khuyến mãi',
+                      isShowAll: true,
+                    ),
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Pitch(
+                            namePitch: 'Sân bóng Tiến Phát',
+                            address: 'Quận 9',
+                            price: 100000,
+                            rate: 4.1,
+                            local: 4.5,
+                          ),
+                          Pitch(
+                            namePitch: 'Sân Bóng trường THPT Phú Nhuận',
+                            address: 'Phú Nhuận',
+                            price: 100000,
+                            rate: 4.5,
+                            local: 10.2,
+                          ),
+                          Pitch(
+                            namePitch: 'Sân Bóng trường THPT Phú Nhuận',
+                            address: 'Phú Nhuận',
+                            price: 100000,
+                            rate: 4.5,
+                            local: 10.2,
+                          ),
                           Pitch(
                             namePitch: 'Sân Bóng trường THPT Phú Nhuận',
                             address: 'Phú Nhuận',
@@ -61,45 +101,6 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                     ),
                     BuildGroupTitle(
                       title: 'Sân được đánh giá cao',
-                      isShowAll: true,
-                    ),
-                    SingleChildScrollView(
-                      scrollDirection: Axis.horizontal,
-                      child: Row(
-                        children: [
-                          Pitch(
-                            namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                            address: 'Phú Nhuận',
-                            price: 100000,
-                            rate: 4.5,
-                            local: 10.2,
-                          ),
-                          Pitch(
-                            namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                            address: 'Phú Nhuận',
-                            price: 100000,
-                            rate: 4.5,
-                            local: 10.2,
-                          ),
-                          Pitch(
-                            namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                            address: 'Phú Nhuận',
-                            price: 100000,
-                            rate: 4.5,
-                            local: 10.2,
-                          ),
-                          Pitch(
-                            namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                            address: 'Phú Nhuận',
-                            price: 100000,
-                            rate: 4.5,
-                            local: 10.2,
-                          ),
-                        ],
-                      ),
-                    ),
-                    BuildGroupTitle(
-                      title: 'Đang khuyến mãi',
                       isShowAll: true,
                     ),
                     SingleChildScrollView(

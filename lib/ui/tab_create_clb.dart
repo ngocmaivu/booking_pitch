@@ -20,7 +20,7 @@ class _TabCreateCLB extends State<TabCreateCLB> {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            // backgroundColor: Colors.lightBlueAccent,
+            backgroundColor: Colors.lightGreen,
             title: Text('CLB'),
             bottom: TabBar(
               tabs: [
@@ -211,7 +211,7 @@ class _TabCreateCLB extends State<TabCreateCLB> {
                         Expanded(
                           child: FlatButton(
                             child: Text('THÊM MỚI'),
-                            color: Colors.lightBlueAccent,
+                            color: Colors.lightGreen,
                             onPressed: () {},
                           ),
                           flex: 3,
@@ -247,7 +247,7 @@ class _TabCreateCLB extends State<TabCreateCLB> {
           hintText: 'Nhập tên đội...',
           suffixIcon: Icon(
             Icons.search,
-            color: Colors.lightBlueAccent,
+            color: Colors.lightGreen,
           ),
         ),
       ),

@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class Pitch extends StatelessWidget {
@@ -20,6 +18,7 @@ class Pitch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       width: 250,
       margin: EdgeInsets.only(

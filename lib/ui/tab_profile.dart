@@ -26,7 +26,7 @@ class _TabProfileScreenState extends State<TabProfileScreen> {
                           children: [
                             CircleAvatar(
                               child: Text('Avatar'),
-                              backgroundColor: Colors.lightBlueAccent,
+                              backgroundColor: Colors.lightGreen,
                               radius: 50,
                             ),
                             SizedBox(
@@ -37,13 +37,6 @@ class _TabProfileScreenState extends State<TabProfileScreen> {
                               children: [
                                 Text(
                                   'Tên:',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                                Text(
-                                  'Mail:',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,

@@ -19,7 +19,7 @@ class _TabNotificationScreenState extends State<TabNotificationScreen> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          // backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Colors.lightGreen,
           title: Text('Thông báo'),
         ),
         body: SafeArea(
@@ -76,7 +76,7 @@ class _TabNotificationScreenState extends State<TabNotificationScreen> {
               padding: EdgeInsets.all(8),
               child: CircleAvatar(
                 child: Text("NM"),
-                backgroundColor: Colors.lightBlueAccent,
+                backgroundColor: Colors.lightGreen,
               ),
             ),
           ),

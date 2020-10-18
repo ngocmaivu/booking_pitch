@@ -36,17 +36,18 @@ class _TabProfileScreenState extends State<TabProfileScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Tên:',
+                                  'Ngọc Mai Vũ',
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 20,
+                                    fontSize: 24,
+                                    color: Colors.lightGreen,
                                   ),
                                 ),
                                 Text(
-                                  'CLB:',
+                                  'FPT Football Club',
                                   style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
+                                    fontSize: 18,
+                                    color: Colors.green,
                                   ),
                                 ),
                               ],

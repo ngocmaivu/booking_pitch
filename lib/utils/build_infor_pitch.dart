@@ -8,6 +8,7 @@ class Pitch extends StatelessWidget {
     @required this.price,
     @required this.rate,
     @required this.local,
+    @required this.promotion,
   }) : super(key: key);
 
   final String namePitch;
@@ -15,6 +16,7 @@ class Pitch extends StatelessWidget {
   final int price;
   final double rate;
   final double local;
+  final int promotion;
 
   @override
   Widget build(BuildContext context) {
@@ -73,7 +75,8 @@ class Pitch extends StatelessWidget {
                 SizedBox(
                   width: 4,
                 ),
-                Text(this.price.toString() + ' VND'),
+                if(promotion > 0 && promotion < price) Text(this.promotion.toString() + ' VND - KHUYẾN MÃI', style: TextStyle(color: Colors.red),)
+                else Text(this.price.toString() + ' VND '),
               ],
             ),
           ),

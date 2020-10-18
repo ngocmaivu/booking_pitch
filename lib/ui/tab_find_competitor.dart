@@ -41,6 +41,7 @@ class _TabFindCompetitor extends State<TabFindCompetitor> {
                 child: Column(
                   children: [
                     _buildSearchTextField(),
+                    _buildCompertitor(),
                   ],
                 ),
               ),
@@ -226,4 +227,63 @@ class _TabFindCompetitor extends State<TabFindCompetitor> {
       ),
     );
   }
+}
+
+Widget _buildCompertitor({
+  bool showMore: true,
+}) {
+  return Container(
+    width: double.maxFinite,
+    height: 100,
+    child: Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: Container(
+            width: double.maxFinite,
+            height: double.maxFinite,
+            padding: EdgeInsets.all(8),
+            child: CircleAvatar(
+              child: Text("FPT"),
+              backgroundColor: Colors.orange,
+            ),
+          ),
+        ),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                'Giao hữu tại quận 9',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Row(
+                children: [
+                  Icon(Icons.gps_fixed, color: Colors.lightGreen,),
+                  Text('Sân bóng đá mini quận 9'),
+                ],
+              ),
+
+              Text(
+                'Thứ Tư, 14:45 - 12/11/2020',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16,
+                ),
+              ),
+            ],
+          ),
+          flex: 7,
+        ),
+        Expanded(
+          child: showMore ? Icon(Icons.more_vert) : Container(),
+          flex: 1,
+        )
+      ],
+    ),
+  );
 }

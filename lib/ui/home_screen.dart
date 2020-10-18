@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
         CupertinoTabView returnValue;
         switch (index) {
           case 0:
-            returnValue = _buildTabView(PitchDetail());
+            returnValue = _buildTabView(TabHomeScreen());
             break;
           case 1:
             returnValue = _buildTabView(TabFindCompetitor());

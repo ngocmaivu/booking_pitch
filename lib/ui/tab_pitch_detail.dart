@@ -51,8 +51,8 @@ class _PitchDetail extends State<PitchDetail> {
           backgroundColor: Colors.lightGreen,
           title: Text('Đặt sân'),
         ),
-        body: ListView(
-            padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),children: [
+        body:
+            ListView(padding: const EdgeInsets.fromLTRB(5, 0, 5, 0), children: [
           GestureDetector(
               child: SafeArea(
                   child: SingleChildScrollView(
@@ -111,7 +111,9 @@ class _PitchDetail extends State<PitchDetail> {
                 color: Colors.grey,
               )
             ]),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             Row(
               children: [
                 Text('Giá: ',
@@ -148,7 +150,7 @@ class _PitchDetail extends State<PitchDetail> {
               children: [
                 TableRow(children: <Widget>[
                   RaisedButton(
-                    color: press[0] ? Colors.lightGreen : Colors.white,
+                    color: press[0] ? Colors.grey : Colors.white,
                     onPressed: () {
                       if (booked[0] == false)
                         setState(() {
@@ -164,7 +166,7 @@ class _PitchDetail extends State<PitchDetail> {
                     ),
                   ),
                   RaisedButton(
-                    color: press[1] ? Colors.lightGreen : Colors.white,
+                    color: press[1] ? Colors.grey : Colors.white,
                     onPressed: () {
                       if (booked[1] == false)
                         setState(() {
@@ -413,7 +415,9 @@ class _PitchDetail extends State<PitchDetail> {
                 ),
               ],
             ),
-            SizedBox(height: 5,),
+            SizedBox(
+              height: 5,
+            ),
             Row(
               children: [
                 Expanded(
@@ -456,7 +460,10 @@ class _PitchDetail extends State<PitchDetail> {
                 ),
                 Expanded(
                   child: FlatButton(
-                    child: Text('ĐẶT SÂN', style: TextStyle(fontSize: 20),),
+                    child: Text(
+                      'ĐẶT SÂN',
+                      style: TextStyle(fontSize: 20),
+                    ),
                     color: Colors.lightGreen,
                     onPressed: () {},
                   ),

@@ -1,8 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sporttt/ui/tab_booking_pitch.dart';
 import 'package:sporttt/ui/tab_find_competitor.dart';
 import 'package:sporttt/ui/tab_create_clb.dart';
 import 'package:sporttt/ui/tab_notification.dart';
+import 'package:sporttt/ui/tab_owner.dart';
 import 'package:sporttt/ui/tab_pitch_detail.dart';
 import 'package:sporttt/ui/tab_profile.dart';
 import 'package:sporttt/utils/date_time_picker.dart';

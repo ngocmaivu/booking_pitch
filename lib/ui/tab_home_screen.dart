@@ -15,7 +15,7 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
       appBar: AppBar(
         backgroundColor: Colors.lightGreen,
         elevation: 0,
-        title: Text('Booking Pitch App'),
+        title: Text('Trang chủ'),
         actions: <Widget>[
           Container(
             width: 60,

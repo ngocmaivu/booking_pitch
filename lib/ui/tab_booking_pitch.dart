@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sporttt/ui/tab_home_screen.dart';
 import 'package:sporttt/utils/date_time_picker.dart';
 
 class BookingPitch extends StatefulWidget {
@@ -8,43 +9,25 @@ class BookingPitch extends StatefulWidget {
 }
 
 class _BookingPitch extends State<BookingPitch> {
-  List<bool> press = [
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
+  List listPitchAvailable = [
+    'Sân cỏ 5 - No1',
+    'Sân cỏ 5 - No2',
+    'Sân cỏ 7 - No1',
+    'Sân cỏ 11 - No1'
   ];
-  List<bool> booked = [
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false
+  List _listPrice = [
+    '100 000 VND/h',
+    '100 000 VND/h',
+    '120 000 VND/h',
+    '150 000 VND/h'
   ];
-  List _listPrice = ['100 000 VND/h', '120 000 VND/h', '150 000 VND/h'];
+  List _booking = [];
+  List booked = [
+    {8, 10},
+    {14, 16}
+  ];
   String value;
-
+  int index = 0;
   // List pressed = new JsArray();
   @override
   Widget build(BuildContext context) {
@@ -129,6 +112,20 @@ class _BookingPitch extends State<BookingPitch> {
               height: 5,
             ),
             Row(
+              // listPitchAvailable
+              children: [
+                Text('Sân hiện có: ',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 19)),
+                SizedBox(
+                  width: 30,
+                ),
+                _buildDropdown(),
+              ],
+            ),
+            Row(
               children: [
                 Text('Giá: ',
                     style: TextStyle(
@@ -138,7 +135,8 @@ class _BookingPitch extends State<BookingPitch> {
                 SizedBox(
                   width: 30,
                 ),
-                _buildDropdown(),
+                Text(_listPrice[index],
+                    style: TextStyle(color: Colors.black, fontSize: 19)),
               ],
             ),
             Row(
@@ -234,7 +232,18 @@ class _BookingPitch extends State<BookingPitch> {
                       style: TextStyle(fontSize: 20),
                     ),
                     color: Colors.lightGreen,
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        _booking.add(value);
+                        _booking.add(
+                            _listPrice[index] * (valueTimeTo - valueTimeFrom));
+                        _booking.add(value);
+                        // Navigator.of(context).push(MaterialPageRoute(
+                        //   builder: (context) => TabHomeScreen(),
+                        // ));
+                        Navigator.pop(context);
+                      });
+                    },
                   ),
                   flex: 3,
                 ),
@@ -252,10 +261,11 @@ class _BookingPitch extends State<BookingPitch> {
         ]));
   }
 
+  int i;
   Widget _buildDropdown() {
     return Container(
       child: DropdownButton(
-        hint: Text("Chọn giá."),
+        hint: Text("Chọn sân"),
         elevation: 9,
         value: value,
         dropdownColor: Colors.lightGreen,
@@ -264,9 +274,15 @@ class _BookingPitch extends State<BookingPitch> {
             value = newValue;
           });
         },
-        items: _listPrice.map((newValue) {
+        items: listPitchAvailable.map((newValue) {
           return DropdownMenuItem(
             value: newValue,
+            onTap: () {
+              setState(() {
+                for (i = 0; i < listPitchAvailable.length; i++)
+                  if (listPitchAvailable[i].toString() == (value)) index = i;
+              });
+            },
             child: Text(newValue),
           );
         }).toList(),

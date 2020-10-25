@@ -9,45 +9,53 @@ class TabHomeScreen extends StatefulWidget {
 }
 
 class _TabHomeScreenState extends State<TabHomeScreen> {
-  double _deviceWidth;
-  ScrollController _scrollController;
-  double positionOfAppBar;
-  @override
-  void initState() {
-    // TODO: implement initState
-    positionOfAppBar = 0;
-    _scrollController = ScrollController();
-    _scrollController.addListener(() {
-      setState(() {
-        positionOfAppBar = 0 - _scrollController.offset;
-      });
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
-    _deviceWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.green,
-      //   elevation: 0,
-      //   title: Text('Trang chủ'),
-      // ),
+      appBar: AppBar(
+        backgroundColor: Colors.lightGreen,
+        elevation: 0,
+        title: Text('Booking Pitch App'),
+        actions: <Widget>[
+          Container(
+            width: 60,
+            child: PopupMenuButton(
+              icon: CircleAvatar(
+                backgroundImage:
+                    NetworkImage("https://i.imgur.com/zismATK.png"),
+                backgroundColor: Colors.amberAccent,
+              ),
+              itemBuilder: (BuildContext context) {
+                return [
+                  PopupMenuItem<String>(
+                    value: '1',
+                    child: Text('1'),
+                  ),
+                  PopupMenuItem<String>(
+                    value: '2',
+                    child: Text('2'),
+                  ),
+                ];
+              },
+            ),
+          )
+        ],
+      ),
       body: SafeArea(
         child: Stack(
           children: [
-            // GestureDetector()
-
+            // GestureDetector(
             GestureDetector(
               child: SafeArea(
                 child: SingleChildScrollView(
-                  controller: _scrollController,
+                  // controller: _scrollController,
                   child: Column(
                     children: [
-                      _buildIcons(),
                       _buildSearchTextField(),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      _buildIcons(),
                       BuildGroupTitle(
                         title: 'Sân quanh đây',
                         isShowAll: true,
@@ -232,9 +240,49 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
       scrollDirection: Axis.vertical,
       child: Row(
         children: [
+          SizedBox(
+            width: 24,
+          ),
           CircleAvatar(
-            child: Text("NM"),
+            child: Icon(
+              Icons.add,
+              color: Colors.white,
+            ),
             backgroundColor: Colors.lightGreen,
+            maxRadius: 30,
+          ),
+          SizedBox(
+            width: 40,
+          ),
+          CircleAvatar(
+            child: Icon(
+              Icons.location_on,
+              color: Colors.white,
+            ),
+            backgroundColor: Colors.lightGreen,
+            maxRadius: 30,
+          ),
+          SizedBox(
+            width: 40,
+          ),
+          CircleAvatar(
+            child: Icon(
+              Icons.star,
+              color: Colors.yellow,
+            ),
+            backgroundColor: Colors.lightGreen,
+            maxRadius: 30,
+          ),
+          SizedBox(
+            width: 40,
+          ),
+          CircleAvatar(
+            child: Icon(
+              Icons.more_time,
+              color: Colors.white,
+            ),
+            backgroundColor: Colors.lightGreen,
+            maxRadius: 30,
           ),
         ],
       ),

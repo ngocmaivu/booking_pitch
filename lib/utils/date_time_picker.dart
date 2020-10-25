@@ -17,8 +17,7 @@ class _DatePickerDemoState extends State<DatePickerDemo> {
       lastDate: DateTime(2025),
       initialEntryMode: DatePickerEntryMode.input,
     );
-    if (picked != null &&
-        picked != selectedDate &&
+    if ((picked != null && picked != selectedDate) &&
         picked.compareTo(selectedDate) > 0)
       setState(() {
         selectedDate = picked;

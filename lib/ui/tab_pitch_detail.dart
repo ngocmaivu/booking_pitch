@@ -42,6 +42,8 @@ class _PitchDetail extends State<PitchDetail> {
     false,
     false
   ];
+  List _listPrice = ['100 000 VND/h', '120 000 VND/h', '150 000 VND/h'];
+  String value;
 
   // List pressed = new JsArray();
   @override
@@ -60,9 +62,21 @@ class _PitchDetail extends State<PitchDetail> {
             SizedBox(
               height: 11,
             ),
+            Container(
+              height: 150,
+              // color: Colors.grey,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: Image.network("https://i.imgur.com/tpOU8bp.jpg").image,
+                fit: BoxFit.cover,
+              )),
+            ),
+            SizedBox(
+              height: 11,
+            ),
             Text('Sân bóng Tiến Phát',
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.lightGreen,
                     fontWeight: FontWeight.bold,
                     fontSize: 24)),
             SizedBox(
@@ -107,7 +121,7 @@ class _PitchDetail extends State<PitchDetail> {
                 style: TextStyle(color: Colors.black, fontSize: 19),
               ),
               Icon(
-                Icons.phone,
+                Icons.phone_enabled,
                 color: Colors.grey,
               )
             ]),
@@ -121,10 +135,10 @@ class _PitchDetail extends State<PitchDetail> {
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 19)),
-                Text(
-                  '100.000VND ~ 150.000VND/h',
-                  style: TextStyle(color: Colors.black, fontSize: 19),
+                SizedBox(
+                  width: 30,
                 ),
+                _buildDropdown(),
               ],
             ),
             Row(
@@ -410,7 +424,7 @@ class _PitchDetail extends State<PitchDetail> {
                 ),
                 Text('* Khung giờ đã được đặt - chọn '),
                 Icon(
-                  Icons.circle,
+                  Icons.web_asset,
                   color: Colors.lightGreen,
                 ),
               ],
@@ -481,5 +495,27 @@ class _PitchDetail extends State<PitchDetail> {
             ),
           ]))))
         ]));
+  }
+
+  Widget _buildDropdown() {
+    return Container(
+      child: DropdownButton(
+        hint: Text("Chọn giá."),
+        elevation: 9,
+        value: value,
+        dropdownColor: Colors.lightGreen,
+        onChanged: (newValue) {
+          setState(() {
+            value = newValue;
+          });
+        },
+        items: _listPrice.map((newValue) {
+          return DropdownMenuItem(
+            value: newValue,
+            child: Text(newValue),
+          );
+        }).toList(),
+      ),
+    );
   }
 }

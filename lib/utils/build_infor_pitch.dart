@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sporttt/ui/tab_booking_pitch.dart';
 import 'package:sporttt/ui/tab_pitch_detail.dart';
 
 class Pitch extends StatelessWidget {
@@ -20,12 +21,11 @@ class Pitch extends StatelessWidget {
   final double rate;
   final double local;
   final int promotion;
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
-        builder: (context) => PitchDetail(),
+        builder: (context) => BookingPitch(),
       )),
       child: Container(
         width: 250,
@@ -50,7 +50,12 @@ class Pitch extends StatelessWidget {
               ),
               child: Container(
                 height: 100,
-                color: Colors.grey,
+                // color: Colors.grey,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                  image: Image.network("https://i.imgur.com/tpOU8bp.jpg").image,
+                  fit: BoxFit.cover,
+                )),
               ),
             ),
             Padding(

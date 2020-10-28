@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:sporttt/bloc/user.dart';
 
 import 'home_screen.dart';
 
@@ -42,6 +44,37 @@ class _LognPageState extends State<LognPage> {
     );
   }
 
+  Widget _buildPasswordRow() {
+    return Padding(
+      padding: EdgeInsets.all(8),
+      child: TextFormField(
+        keyboardType: TextInputType.phone,
+        onChanged: (value) {
+          setState(() {
+            password = value;
+          });
+        },
+        decoration: InputDecoration(
+            prefixIcon: Icon(
+              Icons.lock,
+              color: Colors.lightGreen,
+            ),
+            labelText: 'Mật khẩu'),
+      ),
+    );
+  }
+
+  bool checkLogin() {
+    bool result = false;
+    LIST_USER.forEach((element) {
+      if (element.username == phoneNumber) {
+        print('true');
+        result = true;
+      }
+    });
+    return result;
+  }
+
   Widget _buildLoginButton() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -57,16 +90,24 @@ class _LognPageState extends State<LognPage> {
               borderRadius: BorderRadius.circular(30.0),
             ),
             onPressed: () {
-              setState(() {
-                if (phoneNumber.contains("0332756462"))
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
-                  ));
-                if (phoneNumber.contains("0336465919"))
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => HomeScreen(),
-                  ));
-              });
+              if (checkLogin()) {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => HomeScreen(),
+                ));
+                LIST_USER.add(User(username: 'a', password: 'a'));
+                print(LIST_USER.toString());
+              }
+
+              // setState(() {
+              //   if (phoneNumber.contains("0332756462"))
+              //   Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) => HomeScreen(),
+              //   ));
+              //   if (phoneNumber.contains("0336465919"))
+              //     Navigator.of(context).push(MaterialPageRoute(
+              //       builder: (context) => HomeScreen(),
+              //     ));
+              // });
             },
             child: Text(
               "Đăng nhập",
@@ -91,7 +132,7 @@ class _LognPageState extends State<LognPage> {
             Radius.circular(20),
           ),
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.3,
+            height: MediaQuery.of(context).size.height * 0.4,
             width: MediaQuery.of(context).size.width * 0.7,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -115,6 +156,7 @@ class _LognPageState extends State<LognPage> {
                   height: 20,
                 ),
                 _buildPhoneNumberRow(),
+                _buildPasswordRow(),
                 _buildLoginButton(),
               ],
             ),

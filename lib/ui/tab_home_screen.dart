@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:sporttt/bloc/pitch.dart';
 import 'package:sporttt/ui/tab_pitch_detail.dart';
 import 'package:sporttt/utils/build_group_title.dart';
 import 'package:sporttt/utils/build_infor_pitch.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class TabHomeScreen extends StatefulWidget {
   @override
@@ -14,32 +16,32 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.lightGreen,
-        elevation: 0,
+        // elevation: 0,
         title: Text('Trang chủ'),
-        actions: <Widget>[
-          Container(
-            width: 60,
-            child: PopupMenuButton(
-              icon: CircleAvatar(
-                backgroundImage:
-                    NetworkImage("https://i.imgur.com/zismATK.png"),
-                backgroundColor: Colors.amberAccent,
-              ),
-              itemBuilder: (BuildContext context) {
-                return [
-                  PopupMenuItem<String>(
-                    value: '1',
-                    child: Text('1'),
-                  ),
-                  PopupMenuItem<String>(
-                    value: '2',
-                    child: Text('2'),
-                  ),
-                ];
-              },
-            ),
-          )
-        ],
+        // actions: <Widget>[
+        //   Container(
+        //     width: 50,
+        //     child: PopupMenuButton(
+        //       icon: CircleAvatar(
+        //         backgroundImage:
+        //             NetworkImage("https://i.imgur.com/zismATK.png"),
+        //         backgroundColor: Colors.amberAccent,
+        //       ),
+        //       itemBuilder: (BuildContext context) {
+        //         return [
+        //           // PopupMenuItem<String>(
+        //           //   value: '1',
+        //           //   child: Text('1'),
+        //           // ),
+        //           // PopupMenuItem<String>(
+        //           //   value: '2',
+        //           //   child: Text('2'),
+        //           // ),
+        //         ];
+        //       },
+        //     ),
+        //   )
+        // ],
       ),
       body: SafeArea(
         child: Stack(
@@ -60,46 +62,19 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                         title: 'Sân quanh đây',
                         isShowAll: true,
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Pitch(
-                              namePitch: 'Sân bóng Tiến Phát',
-                              address: 'Quận 9',
-                              price: 100000,
-                              promotion: 0,
-                              rate: 4.1,
-                              local: 4.5,
-                              function: () =>
-                                  Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => PitchDetail(),
-                              )),
-                            ),
-                            Pitch(
-                              namePitch: 'Sân bóng đá mini',
-                              address: 'Quận 9',
-                              price: 100000,
-                              promotion: 0,
-                              rate: 3.7,
-                              local: 7.2,
-                            ),
-                            Pitch(
-                                namePitch: 'Sân bóng Trương Văn Thành',
-                                address: 'Quận 9',
-                                price: 100000,
-                                promotion: 0,
-                                rate: 3.8,
-                                local: 3.1),
-                            Pitch(
-                              namePitch: 'Sân Cỏ Hiệp Phú',
-                              address: 'Quận 9',
-                              price: 100000,
-                              promotion: 0,
-                              rate: 3.8,
-                              local: 2.4,
-                            ),
-                          ],
+                      Container(
+                        height: 250,
+                        child: ListView.builder(
+                          itemBuilder: (context, index) => Pitch(
+                            namePitch: LIST_PITCH[index].name,
+                            address: 'Quận 9',
+                            price: 100000,
+                            promotion: 90000,
+                            rate: 4.1,
+                            local: 4.5,
+                          ),
+                          itemCount: LIST_PITCH.length,
+                          scrollDirection: Axis.horizontal,
                         ),
                       ),
                       BuildGroupTitle(
@@ -213,24 +188,18 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
   }
 
   Widget _buildSearchTextField() {
-    return Container(
+    return NeumorphicButton(
       padding: const EdgeInsets.fromLTRB(14, 15, 14, 30),
-      child: TextField(
-        // cursorHeight: 30,
-        decoration: InputDecoration(
-          fillColor: Colors.white,
-          hoverColor: Colors.white,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(10),
-            ),
-          ),
-          hintText: 'Tìm tên sân...',
-          suffixIcon: Icon(
-            Icons.search,
-            color: Colors.lightGreen,
-          ),
-        ),
+      // style: NeumorphicStyle(
+      //   border: NeumorphicBorder(
+      //     color: Color(0xfffffcfc),
+      //     width: 0.8,
+      //     isEnabled: true,
+      //   ),
+      //   // boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(72)),
+      // ),
+      child: Text(
+        "Nhập tên sân",
       ),
     );
   }

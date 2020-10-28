@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sporttt/ui/tab_home_screen.dart';
 import 'package:sporttt/utils/date_time_picker.dart';
 
@@ -26,8 +27,18 @@ class _BookingPitch extends State<BookingPitch> {
     {8, 10},
     {14, 16}
   ];
-  String value;
+  String value, price = '100 000 VND/h';
+  int _selectedIndex;
+
   int index = 0;
+  // @override
+  // void initState() {
+  //   _selectedIndex = 0;
+  //   value = listPitchAvailable[0];
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
+
   // List pressed = new JsArray();
   @override
   Widget build(BuildContext context) {
@@ -120,25 +131,16 @@ class _BookingPitch extends State<BookingPitch> {
                         fontWeight: FontWeight.bold,
                         fontSize: 19)),
                 SizedBox(
-                  width: 30,
+                  width: 60,
                 ),
-                _buildDropdown(),
-              ],
-            ),
-            Row(
-              children: [
                 Text('Giá: ',
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
                         fontSize: 19)),
-                SizedBox(
-                  width: 30,
-                ),
-                Text(_listPrice[index],
-                    style: TextStyle(color: Colors.black, fontSize: 19)),
               ],
             ),
+            _buildDropdown(),
             Row(
               children: [
                 Text('Chọn ngày    ',
@@ -234,14 +236,52 @@ class _BookingPitch extends State<BookingPitch> {
                     color: Colors.lightGreen,
                     onPressed: () {
                       setState(() {
-                        _booking.add(value);
-                        _booking.add(
-                            _listPrice[index] * (valueTimeTo - valueTimeFrom));
-                        _booking.add(value);
-                        // Navigator.of(context).push(MaterialPageRoute(
-                        //   builder: (context) => TabHomeScreen(),
-                        // ));
-                        Navigator.pop(context);
+                        if (value == null) {
+                          Fluttertoast.showToast(
+                              msg: "Vui lòng chọn sân!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                        } else if (valueTimeTo == null ||
+                            valueTimeFrom == null) {
+                          Fluttertoast.showToast(
+                              msg: "Giờ không hợp lệ!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                        } else if (valueTimeTo <= valueTimeFrom)
+                          Fluttertoast.showToast(
+                              msg: "Giờ không hợp lệ!",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.red,
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                        else {
+                          _booking.add(value);
+                          _booking.add(_listPrice[index] *
+                              (valueTimeTo - valueTimeFrom));
+                          _booking.add(value);
+                          // Navigator.of(context).push(MaterialPageRoute(
+                          //   builder: (context) => TabHomeScreen(),
+                          // ));
+                          Fluttertoast.showToast(
+                              msg: "Đặt sân thành công",
+                              toastLength: Toast.LENGTH_SHORT,
+                              gravity: ToastGravity.CENTER,
+                              timeInSecForIosWeb: 1,
+                              backgroundColor: Colors.green,
+                              textColor: Colors.white,
+                              fontSize: 16.0);
+                          Navigator.pop(context);
+                        }
                       });
                     },
                   ),
@@ -261,33 +301,40 @@ class _BookingPitch extends State<BookingPitch> {
         ]));
   }
 
-  int i;
   Widget _buildDropdown() {
     return Container(
-      child: DropdownButton(
-        hint: Text("Chọn sân"),
-        elevation: 9,
-        value: value,
-        dropdownColor: Colors.lightGreen,
-        onChanged: (newValue) {
-          setState(() {
-            value = newValue;
-          });
-        },
-        items: listPitchAvailable.map((newValue) {
-          return DropdownMenuItem(
-            value: newValue,
-            onTap: () {
-              setState(() {
-                for (i = 0; i < listPitchAvailable.length; i++)
-                  if (listPitchAvailable[i].toString() == (value)) index = i;
-              });
-            },
-            child: Text(newValue),
-          );
-        }).toList(),
-      ),
-    );
+        child: Column(
+      children: [
+        Row(
+          children: [
+            DropdownButton(
+              hint: Text("Chọn sân"),
+              elevation: 9,
+              value: value,
+              dropdownColor: Colors.lightGreen,
+              onChanged: (newValue) {
+                setState(() {
+                  value = newValue;
+                  for (int i = 0; i < listPitchAvailable.length; i++)
+                    if (listPitchAvailable[i].toString() == (value)) index = i;
+                });
+              },
+              items: listPitchAvailable.map((newValue) {
+                return DropdownMenuItem(
+                  value: newValue,
+                  child: Text(newValue),
+                );
+              }).toList(),
+            ),
+            SizedBox(
+              width: 30,
+            ),
+            Text(_listPrice[index],
+                style: TextStyle(color: Colors.black, fontSize: 19)),
+          ],
+        ),
+      ],
+    ));
   }
 
   List listTime = [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22];
@@ -323,6 +370,9 @@ class _BookingPitch extends State<BookingPitch> {
         dropdownColor: Colors.lightGreen,
         onChanged: (newValue) {
           setState(() {
+            // if (valueTimeFrom >= newValue)
+            //   valueTimeTo = newValue;
+            // else
             valueTimeTo = newValue;
           });
         },

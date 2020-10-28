@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sporttt/ui/tab_booking_pitch.dart';
 import 'package:sporttt/ui/tab_pitch_detail.dart';
+import 'package:intl/intl.dart';
 
 class Pitch extends StatelessWidget {
-  const Pitch({
+  Pitch({
     Key key,
     @required this.namePitch,
     @required this.address,
@@ -21,6 +22,8 @@ class Pitch extends StatelessWidget {
   final double rate;
   final double local;
   final int promotion;
+  final NumberFormat oCcy = new NumberFormat("#,##0.0", "en_US");
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -90,19 +93,19 @@ class Pitch extends StatelessWidget {
                     (Row(
                       children: [
                         Text(
-                          this.price.toString() + ' VND ',
+                          oCcy.format(this.price).toString() + ' VND ',
                           style:
                               TextStyle(decoration: TextDecoration.lineThrough),
                         ),
                         Icon(Icons.navigate_next),
                         Text(
-                          this.promotion.toString() + ' VND',
+                          oCcy.format(this.promotion).toString() + ' VND ',
                           style: TextStyle(color: Colors.red),
                         )
                       ],
                     ))
                   else
-                    Text(this.price.toString() + ' VND '),
+                    Text(oCcy.format(this.price).toString() + ' VND '),
                 ],
               ),
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sporttt/ui/tab_admin_noti_detail.dart';
 import 'package:sporttt/ui/tab_find_competitor.dart';
 import 'package:sporttt/ui/tab_owner.dart';
 import '../utils/constant.dart';
@@ -33,12 +34,12 @@ class _OwnerScreen extends State<OwnerScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.add_circle,
+              Icons.notifications,
               color: Colors.grey,
               size: 26,
             ),
             activeIcon: Icon(
-              Icons.add_circle,
+              Icons.notifications,
               color: Colors.lightGreen,
               size: 36,
             ),
@@ -54,7 +55,7 @@ class _OwnerScreen extends State<OwnerScreen> {
             returnValue = _buildTabView(PitchManagement());
             break;
           case 1:
-            returnValue = _buildTabView(TabFindCompetitor());
+            returnValue = _buildTabView(TabNotificationAdmin());
             break;
         }
         return returnValue;

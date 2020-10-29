@@ -45,6 +45,7 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
                 ),
               ],
             ),
+            Text('Nhấn vào để xem chi tiết '),
             deletePitch(),
           ],
         ),
@@ -54,19 +55,19 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
 
   List<TableRow> buildButtons() {
     List<TableRow> rows = [];
-
-    int id = 0;
-    int time = 1;
+    String booker = 'Nguyen Van A';
     bool check = false;
-    for (var i = 0; i < 6; i++) {
+    int id = 0;
+    int time = 7;
+
+    for (var i = 0; i < 4; i++) {
       // new empty row
       List<Widget> rowChildren = [];
 
       for (var y = 0; y < 4; y++, id++) {
         // fill row with buttons
-        rowChildren.add(_buildButtonTime(time, check));
+        rowChildren.add(_buildButtonTime(time, check, booker));
         time++;
-        // check = !check;
       }
       rows.add(new TableRow(children: rowChildren));
     }
@@ -74,13 +75,42 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
     return rows;
   }
 
-  Widget _buildButtonTime(int time, bool booked) {
+  _showBookerInfor(String booker) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text('Sân đã được đặt'),
+          content: Text('Người đặt: ' + booker),
+          actions: <Widget>[
+            CupertinoDialogAction(
+              child: Text('Hủy đặt'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            CupertinoDialogAction(
+              child: Text('Cho phép'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildButtonTime(int time, bool booked, String booker) {
     return NeumorphicButton(
       // color: Colors.white,
       style: NeumorphicStyle(
           color: booked ? Colors.grey : Colors.white,
           border: NeumorphicBorder(color: Colors.black)),
-      onPressed: () {},
+      onPressed: () {
+        if (booked == true) _showBookerInfor(booker);
+      },
       padding: EdgeInsets.all(6),
       child: Container(
         padding: EdgeInsets.all(10.0),

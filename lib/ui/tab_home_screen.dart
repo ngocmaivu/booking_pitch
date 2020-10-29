@@ -18,30 +18,6 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
         backgroundColor: Colors.lightGreen,
         // elevation: 0,
         title: Text('Trang chủ'),
-        // actions: <Widget>[
-        //   Container(
-        //     width: 50,
-        //     child: PopupMenuButton(
-        //       icon: CircleAvatar(
-        //         backgroundImage:
-        //             NetworkImage("https://i.imgur.com/zismATK.png"),
-        //         backgroundColor: Colors.amberAccent,
-        //       ),
-        //       itemBuilder: (BuildContext context) {
-        //         return [
-        //           // PopupMenuItem<String>(
-        //           //   value: '1',
-        //           //   child: Text('1'),
-        //           // ),
-        //           // PopupMenuItem<String>(
-        //           //   value: '2',
-        //           //   child: Text('2'),
-        //           // ),
-        //         ];
-        //       },
-        //     ),
-        //   )
-        // ],
       ),
       body: SafeArea(
         child: Stack(
@@ -69,9 +45,10 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                             namePitch: LIST_PITCH[index].name,
                             address: 'Quận 9',
                             price: 100000,
-                            promotion: 90000,
+                            promotion: 0,
                             rate: 4.1,
                             local: 4.5,
+                            image: "https://i.imgur.com/tpOU8bp.jpg",
                           ),
                           itemCount: LIST_PITCH.length,
                           scrollDirection: Axis.horizontal,
@@ -81,86 +58,40 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                         title: 'Đang khuyến mãi',
                         isShowAll: true,
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Pitch(
-                              namePitch: 'Sân bóng Tiến Phát',
-                              address: 'Quận 9',
-                              price: 100000,
-                              promotion: 90000,
-                              rate: 4.1,
-                              local: 4.5,
-                            ),
-                            Pitch(
-                              namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                              address: 'Phú Nhuận',
-                              price: 100000,
-                              promotion: 90000,
-                              rate: 4.5,
-                              local: 10.2,
-                            ),
-                            Pitch(
-                              namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                              address: 'Phú Nhuận',
-                              price: 100000,
-                              promotion: 90000,
-                              rate: 4.5,
-                              local: 10.2,
-                            ),
-                            Pitch(
-                              namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                              address: 'Phú Nhuận',
-                              price: 100000,
-                              promotion: 90000,
-                              rate: 4.5,
-                              local: 10.2,
-                            ),
-                          ],
+                      Container(
+                        height: 250,
+                        child: ListView.builder(
+                          itemBuilder: (context, index) => Pitch(
+                            namePitch: LIST_PITCH[index].name,
+                            address: 'Quận 9',
+                            price: 100000,
+                            promotion: 90000,
+                            rate: 4.1,
+                            local: 4.5,
+                            image: "https://i.imgur.com/tpOU8bp.jpg",
+                          ),
+                          itemCount: LIST_PITCH.length,
+                          scrollDirection: Axis.horizontal,
                         ),
                       ),
                       BuildGroupTitle(
                         title: 'Sân được đánh giá cao',
                         isShowAll: true,
                       ),
-                      SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Row(
-                          children: [
-                            Pitch(
-                              namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                              address: 'Phú Nhuận',
-                              price: 100000,
-                              promotion: 0,
-                              rate: 4.5,
-                              local: 10.2,
-                            ),
-                            Pitch(
-                              namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                              address: 'Phú Nhuận',
-                              price: 100000,
-                              promotion: 0,
-                              rate: 4.5,
-                              local: 10.2,
-                            ),
-                            Pitch(
-                              namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                              address: 'Phú Nhuận',
-                              price: 100000,
-                              promotion: 0,
-                              rate: 4.5,
-                              local: 10.2,
-                            ),
-                            Pitch(
-                              namePitch: 'Sân Bóng trường THPT Phú Nhuận',
-                              address: 'Phú Nhuận',
-                              price: 100000,
-                              promotion: 0,
-                              rate: 4.5,
-                              local: 10.2,
-                            ),
-                          ],
+                      Container(
+                        height: 250,
+                        child: ListView.builder(
+                          itemBuilder: (context, index) => Pitch(
+                            namePitch: LIST_PITCH[index].name,
+                            address: 'Quận 9',
+                            price: 100000,
+                            promotion: 0,
+                            rate: 4.1,
+                            local: 4.5,
+                            image: "https://i.imgur.com/tpOU8bp.jpg",
+                          ),
+                          itemCount: LIST_PITCH.length,
+                          scrollDirection: Axis.horizontal,
                         ),
                       ),
                     ],

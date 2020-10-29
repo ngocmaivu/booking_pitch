@@ -1,12 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sporttt/ui/tab_find_competitor.dart';
-import 'package:sporttt/ui/tab_create_clb.dart';
-import 'package:sporttt/ui/tab_notification.dart';
 import 'package:sporttt/ui/tab_owner.dart';
-import 'package:sporttt/ui/tab_pitch_detail.dart';
-import 'package:sporttt/ui/tab_profile.dart';
-import './tab_home_screen.dart';
 import '../utils/constant.dart';
 
 class OwnerScreen extends StatefulWidget {
@@ -17,13 +12,38 @@ class OwnerScreen extends StatefulWidget {
 class _OwnerScreen extends State<OwnerScreen> {
   @override
   Widget build(BuildContext context) {
-    return _buildHomeScreen();
+    return _buildOwnerScreen();
   }
 
-  Widget _buildHomeScreen() {
+  Widget _buildOwnerScreen() {
     return CupertinoTabScaffold(
       tabBar: CupertinoTabBar(
-        items: BOTTOM_NAVIGATION_BAR_ITEMS,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.grey,
+              size: 26,
+            ),
+            activeIcon: Icon(
+              Icons.home,
+              color: Colors.lightGreen,
+              size: 36,
+            ),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.add_circle,
+              color: Colors.grey,
+              size: 26,
+            ),
+            activeIcon: Icon(
+              Icons.add_circle,
+              color: Colors.lightGreen,
+              size: 36,
+            ),
+          ),
+        ],
         activeColor: Colors.black,
         inactiveColor: Colors.grey,
       ),
@@ -31,19 +51,10 @@ class _OwnerScreen extends State<OwnerScreen> {
         CupertinoTabView returnValue;
         switch (index) {
           case 0:
-            returnValue = _buildTabView(BookingPitchManagement());
+            returnValue = _buildTabView(PitchManagement());
             break;
           case 1:
             returnValue = _buildTabView(TabFindCompetitor());
-            break;
-          case 2:
-            returnValue = _buildTabView(TabCreateCLB());
-            break;
-          case 3:
-            returnValue = _buildTabView(TabNotificationScreen());
-            break;
-          case 4:
-            returnValue = _buildTabView(TabProfileScreen());
             break;
         }
         return returnValue;

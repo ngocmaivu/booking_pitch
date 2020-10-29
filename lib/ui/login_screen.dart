@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:sporttt/bloc/admin.dart';
 import 'package:sporttt/bloc/user.dart';
+import 'package:sporttt/ui/owner_screen.dart';
 
 import 'home_screen.dart';
 
@@ -28,7 +30,7 @@ class _LognPageState extends State<LognPage> {
     return Padding(
       padding: EdgeInsets.all(8),
       child: TextFormField(
-        keyboardType: TextInputType.phone,
+        keyboardType: TextInputType.text,
         onChanged: (value) {
           setState(() {
             phoneNumber = value;
@@ -39,7 +41,7 @@ class _LognPageState extends State<LognPage> {
               Icons.phone,
               color: Colors.lightGreen,
             ),
-            labelText: 'Số điện thoại'),
+            labelText: 'Tên đăng nhập'),
       ),
     );
   }
@@ -48,7 +50,7 @@ class _LognPageState extends State<LognPage> {
     return Padding(
       padding: EdgeInsets.all(8),
       child: TextFormField(
-        keyboardType: TextInputType.phone,
+        keyboardType: TextInputType.text,
         onChanged: (value) {
           setState(() {
             password = value;
@@ -64,12 +66,19 @@ class _LognPageState extends State<LognPage> {
     );
   }
 
-  bool checkLogin() {
-    bool result = false;
+//role admin = 2, user = 1
+  int checkLogin() {
+    int result = -1;
     LIST_USER.forEach((element) {
       if (element.username == phoneNumber) {
-        print('true');
-        result = true;
+        print('user');
+        result = 1;
+      }
+    });
+    LIST_ADMIN.forEach((element) {
+      if (element.admin == phoneNumber) {
+        print('admin');
+        result = 2;
       }
     });
     return result;
@@ -90,24 +99,17 @@ class _LognPageState extends State<LognPage> {
               borderRadius: BorderRadius.circular(30.0),
             ),
             onPressed: () {
-              if (checkLogin()) {
+              if (checkLogin() == 1) {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => HomeScreen(),
                 ));
                 LIST_USER.add(User(username: 'a', password: 'a'));
                 print(LIST_USER.toString());
+              } else if (checkLogin() == 2) {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => OwnerScreen(),
+                ));
               }
-
-              // setState(() {
-              //   if (phoneNumber.contains("0332756462"))
-              //   Navigator.of(context).push(MaterialPageRoute(
-              //     builder: (context) => HomeScreen(),
-              //   ));
-              //   if (phoneNumber.contains("0336465919"))
-              //     Navigator.of(context).push(MaterialPageRoute(
-              //       builder: (context) => HomeScreen(),
-              //     ));
-              // });
             },
             child: Text(
               "Đăng nhập",

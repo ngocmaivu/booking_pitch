@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sporttt/ui/tab_booking_pitch.dart';
-import 'package:sporttt/ui/tab_pitch_detail.dart';
 import 'package:intl/intl.dart';
 
 class Pitch extends StatelessWidget {
@@ -12,6 +11,7 @@ class Pitch extends StatelessWidget {
     @required this.rate,
     @required this.local,
     @required this.promotion,
+    this.image,
     this.function,
   }) : super(key: key);
 
@@ -22,6 +22,7 @@ class Pitch extends StatelessWidget {
   final double rate;
   final double local;
   final int promotion;
+  final String image;
   final NumberFormat oCcy = new NumberFormat("#,##0.0", "en_US");
 
   @override
@@ -31,7 +32,7 @@ class Pitch extends StatelessWidget {
         builder: (context) => BookingPitch(),
       )),
       child: Container(
-        width: 250,
+        width: 252,
         margin: EdgeInsets.only(
           left: 16,
         ),
@@ -56,7 +57,7 @@ class Pitch extends StatelessWidget {
                 // color: Colors.grey,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                  image: Image.network("https://i.imgur.com/tpOU8bp.jpg").image,
+                  image: Image.network(image).image,
                   fit: BoxFit.cover,
                 )),
               ),

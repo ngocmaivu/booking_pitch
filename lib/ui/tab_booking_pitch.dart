@@ -29,17 +29,7 @@ class _BookingPitch extends State<BookingPitch> {
   ];
   String value, price = '100 000 VND/h';
   int _selectedIndex;
-
   int index = 0;
-  // @override
-  // void initState() {
-  //   _selectedIndex = 0;
-  //   value = listPitchAvailable[0];
-  //   // TODO: implement initState
-  //   super.initState();
-  // }
-
-  // List pressed = new JsArray();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

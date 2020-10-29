@@ -119,18 +119,21 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
   }
 
   Widget _buildSearchTextField() {
-    return NeumorphicButton(
-      padding: const EdgeInsets.fromLTRB(14, 15, 14, 30),
-      // style: NeumorphicStyle(
-      //   border: NeumorphicBorder(
-      //     color: Color(0xfffffcfc),
-      //     width: 0.8,
-      //     isEnabled: true,
-      //   ),
-      //   // boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(72)),
-      // ),
-      child: Text(
-        "Nhập tên sân",
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(14, 5, 14, 10),
+      child: TextField(
+        decoration: InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+          hintText: 'Nhập tên sân...',
+          suffixIcon: Icon(
+            Icons.search,
+            color: Colors.lightGreen,
+          ),
+        ),
       ),
     );
   }

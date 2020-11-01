@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:sporttt/ui/tab_booking_pitch.dart';
 import 'package:intl/intl.dart';
 
@@ -31,112 +33,116 @@ class Pitch extends StatelessWidget {
       onTap: () => Navigator.of(context).push(MaterialPageRoute(
         builder: (context) => BookingPitch(),
       )),
-      child: Container(
-        width: 252,
-        margin: EdgeInsets.only(
-          left: 16,
+      child: Neumorphic(
+        // width: 252,
+        margin: EdgeInsets.all(16),
+        style: NeumorphicStyle(
+          // shape: NeumorphicShape.concave,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
+          depth: 8,
+          lightSource: LightSource.topLeft,
+          // border: NeumorphicBorder(width: 1, color: Colors.black)
         ),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: Colors.black,
-          ),
-          borderRadius: BorderRadius.all(
-            Radius.circular(8),
-          ),
-        ),
+
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(8),
-                topRight: Radius.circular(8),
-              ),
+            Neumorphic(
+              margin: EdgeInsets.all(10),
+              // style: NeumorphicStyle(
+              // border: NeumorphicBorder(width: 1, color: Colors.black)),
               child: Container(
-                height: 100,
-                // color: Colors.grey,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                  image: Image.network(image).image,
-                  fit: BoxFit.cover,
-                )),
-              ),
+                  width: 250,
+                  height: 77,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                    image: Image.network(image).image,
+                    fit: BoxFit.cover,
+                  ))),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
+              padding: EdgeInsets.all(2),
+              child: NeumorphicText(
                 this.namePitch,
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
+                style: NeumorphicStyle(
+                  depth: 10,
+                  color: Colors.black,
                 ),
+                textStyle: NeumorphicTextStyle(
+                    fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(this.address + ' ~ ' + local.toString() + 'km'),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(
-                left: 8,
-                bottom: 0,
+            Row(children: [
+              Icon(
+                Icons.location_on,
+                color: Colors.green[700],
               ),
-              child: Row(
+              NeumorphicText(
+                this.address + ' ~ ' + local.toString() + 'km',
+                style: NeumorphicStyle(
+                  depth: 10,
+                  color: Colors.black,
+                ),
+                textStyle: NeumorphicTextStyle(
+                    fontSize: 14, fontWeight: FontWeight.w500),
+              ),
+            ]),
+            if (price <= promotion)
+              Row(
                 children: [
-                  CircleAvatar(
-                    child: Text('Giá'),
-                    backgroundColor: Colors.white,
-                    radius: 14,
+                  Icon(
+                    Icons.monetization_on,
+                    color: Colors.green[800],
                   ),
-                  SizedBox(
-                    width: 4,
+                  Text(
+                    oCcy.format(this.price).toString() + ' VND/h',
+                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
-                  if (promotion > 0 && promotion < price)
-                    (Row(
-                      children: [
-                        Text(
-                          oCcy.format(this.price).toString() + ' VND ',
-                          style:
-                              TextStyle(decoration: TextDecoration.lineThrough),
-                        ),
-                        Icon(Icons.navigate_next),
-                        Text(
-                          oCcy.format(this.promotion).toString() + ' VND ',
-                          style: TextStyle(color: Colors.red),
-                        )
-                      ],
-                    ))
-                  else
-                    Text(oCcy.format(this.price).toString() + ' VND '),
                 ],
               ),
+            if (price > promotion)
+              Column(
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.monetization_on,
+                        color: Colors.green[800],
+                      ),
+                      Text(
+                        oCcy.format(this.price).toString() + ' VND/h',
+                        style: TextStyle(
+                            decoration: TextDecoration.lineThrough,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.arrow_downward,
+                        color: Colors.red,
+                      ),
+                      Text(
+                        oCcy.format(this.price).toString() + ' VND/h',
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.w900),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            Row(
+              children: [
+                Text(
+                  rate.toString(),
+                  style: TextStyle(fontWeight: FontWeight.w900),
+                ),
+                Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                ),
+              ],
             ),
-            Padding(
-                padding: const EdgeInsets.only(
-                  left: 8,
-                ),
-                child: Row(
-                  children: [
-                    Text('Đánh giá: ' + this.rate.toString()),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                  ],
-                )),
-            Padding(
-                padding: const EdgeInsets.only(
-                  left: 8,
-                  bottom: 8,
-                ),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.access_alarm,
-                      color: Colors.red,
-                    ),
-                    Text('9:00 - 22:00'),
-                  ],
-                )),
           ],
         ),
       ),

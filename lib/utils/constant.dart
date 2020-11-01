@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:intl/intl.dart';
 
 // List Bottom Navigation Bar Items
 const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
@@ -11,7 +13,7 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
     ),
     activeIcon: Icon(
       Icons.home,
-      color: Colors.lightGreen,
+      color: Colors.green,
       size: 36,
     ),
   ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class TabNotificationScreen extends StatefulWidget {
   @override
@@ -18,65 +19,48 @@ class _TabNotificationScreenState extends State<TabNotificationScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightGreen,
+        appBar: NeumorphicAppBar(
           title: Text('Thông báo'),
         ),
         body: SafeArea(
-          child: TabBarView(
-            children: [
-              SingleChildScrollView(
-                child: Column(
-                  children: [
-                    _buildMessage(),
-                    _buildMessage(isRead: false),
-                    _buildMessage(),
-                    _buildMessage(isRead: false),
-                    _buildMessage(),
-                    _buildMessage(),
-                    _buildMessage(),
-                  ],
-                ),
-              ),
-              SingleChildScrollView(
-                child: Column(
-                  children: [
-                    _buildMessage(
-                      showMore: true,
-                    ),
-                    _buildMessage(
-                      isRead: false,
-                      showMore: true,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+          child: Column(children: [
+            _buildMessage(),
+            _buildMessage(),
+            _buildMessage(),
+          ]),
         ),
       ),
     );
   }
 
-  Widget _buildMessage({
-    bool isRead: true,
-    bool showMore: false,
-  }) {
-    return Container(
-      color: isRead ? Colors.white : Colors.black12,
-      width: double.maxFinite,
-      height: 100,
-      child: Row(
-        children: [
+  Widget _buildMessage() {
+    return Neumorphic(
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(10),
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.concave,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
+          depth: 3,
+          color: Colors.white,
+          // lightSource: LightSource.topLeft,
+        ),
+        child: Row(children: [
           Expanded(
-            flex: 2,
-            child: Container(
-              width: double.maxFinite,
-              height: double.maxFinite,
-              padding: EdgeInsets.all(8),
+            flex: 1,
+            child: Neumorphic(
+              style: NeumorphicStyle(
+                shape: NeumorphicShape.concave,
+                boxShape: NeumorphicBoxShape.circle(),
+                depth: 2,
+                color: Colors.grey[100],
+                // lightSource: LightSource.topLeft,
+              ),
               child: CircleAvatar(
-                child: Text("NM"),
-                backgroundColor: Colors.lightGreen,
+                child: Text(
+                  "",
+                  style: TextStyle(color: Colors.black),
+                ),
+                backgroundColor: Colors.orange[200],
               ),
             ),
           ),
@@ -86,30 +70,25 @@ class _TabNotificationScreenState extends State<TabNotificationScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  'Thông báo từ CLB',
+                  'Bạn đã đặt sân thành công',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                Text('Bạn đã tham gia CLB thành công'),
-                Text(
-                  'Thứ Ba, 14:45',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16,
-                  ),
+                Row(
+                  children: [
+                    Icon(
+                      Icons.location_on,
+                      color: Colors.lightGreen,
+                    ),
+                    Text('Sân bóng đá mini quận 9'),
+                  ],
                 ),
               ],
             ),
-            flex: 7,
+            flex: 4,
           ),
-          Expanded(
-            child: showMore ? Icon(Icons.more_vert) : Container(),
-            flex: 1,
-          )
-        ],
-      ),
-    );
+        ]));
   }
 }

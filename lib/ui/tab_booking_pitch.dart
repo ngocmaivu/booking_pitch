@@ -14,23 +14,25 @@ class _BookingPitch extends State<BookingPitch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightGreen,
-          title: Text('Đặt sân'),
+      appBar: NeumorphicAppBar(
+        title: Text('Đặt sân'),
+      ),
+      body: ListView(padding: const EdgeInsets.fromLTRB(5, 0, 5, 0), children: [
+        GestureDetector(
+          child: SafeArea(
+            child: SingleChildScrollView(
+              child: _buildContainer(
+                  'Sân bóng Tiến Phát',
+                  'https://i.imgur.com/tpOU8bp.jpg',
+                  '112/3 Lê Văn Việt, Q9',
+                  '4.5',
+                  '0332756462',
+                  100000),
+            ),
+          ),
         ),
-        body:
-            ListView(padding: const EdgeInsets.fromLTRB(5, 0, 5, 0), children: [
-          GestureDetector(
-              child: SafeArea(
-                  child: SingleChildScrollView(
-                      child: _buildContainer(
-                          'Sân bóng Tiến Phát',
-                          'https://i.imgur.com/tpOU8bp.jpg',
-                          '112/3 Lê Văn Việt, Q9',
-                          '4.5',
-                          '0332756462',
-                          100000))))
-        ]));
+      ]),
+    );
   }
 
   Widget _buildContainer(String namePitch, String imgURL, String address,
@@ -39,23 +41,29 @@ class _BookingPitch extends State<BookingPitch> {
       SizedBox(
         height: 11,
       ),
-      Container(
-        height: 100,
-        // color: Colors.grey,
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: Image.network(imgURL).image,
-          fit: BoxFit.cover,
-        )),
+      // Container(
+      //   height: 100,
+      //   // color: Colors.grey,
+      //   decoration: BoxDecoration(
+      //       image: DecorationImage(
+      //     image: Image.network(imgURL).image,
+      //     fit: BoxFit.cover,
+      //   )),
+      // ),
+      // SizedBox(
+      //   height: 11,
+      // ),
+      NeumorphicText(
+        namePitch,
+        textStyle: NeumorphicTextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 30,
+        ),
+        style: NeumorphicStyle(
+          depth: 10,
+          color: Colors.green,
+        ),
       ),
-      SizedBox(
-        height: 11,
-      ),
-      Text(namePitch,
-          style: TextStyle(
-              color: Colors.lightGreen,
-              fontWeight: FontWeight.bold,
-              fontSize: 24)),
       SizedBox(
         height: 11,
       ),
@@ -99,85 +107,44 @@ class _BookingPitch extends State<BookingPitch> {
       SizedBox(
         height: 11,
       ),
+      // new Table(
+      //   // border: TableBorder.all(),
+      //   children: buildButtons(),
+      // ),
       new Table(
-        // border: TableBorder.all(),
         children: buildButtons(),
       ),
       SizedBox(
-        height: 11,
+        height: 30,
       ),
-      Row(
-        children: [
-          Expanded(
-            child: Text(
-              'Ghi chú',
-              style: TextStyle(
-                fontSize: 19,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            flex: 1,
+
+      Neumorphic(
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.concave,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+          depth: 8,
+          color: Colors.green[200],
+          // lightSource: LightSource.topLeft,
+        ),
+        child: NeumorphicButton(
+          style: NeumorphicStyle(color: Colors.green[200]),
+          child: Text(
+            'ĐẶT SÂN',
+            style: TextStyle(fontSize: 20),
           ),
-          Expanded(
-            child: TextFormField(
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(8),
-                  ),
-                ),
-                hintText: '',
-              ),
-            ),
-            flex: 3,
-          ),
-        ],
-      ),
-      SizedBox(
-        height: 15,
-      ),
-      Row(
-        children: [
-          Expanded(
-            child: FlatButton(
-              child: Text(''),
-              color: Colors.white,
-              onPressed: () {},
-            ),
-            flex: 1,
-          ),
-          Expanded(
-            child: FlatButton(
-              child: Text(
-                'ĐẶT SÂN',
-                style: TextStyle(fontSize: 20),
-              ),
-              color: Colors.lightGreen,
-              onPressed: () {
-                setState(() {
-                  Fluttertoast.showToast(
-                      msg: "Đặt sân thành công",
-                      toastLength: Toast.LENGTH_SHORT,
-                      gravity: ToastGravity.CENTER,
-                      timeInSecForIosWeb: 1,
-                      backgroundColor: Colors.green,
-                      textColor: Colors.white,
-                      fontSize: 16.0);
-                  Navigator.pop(context);
-                });
-              },
-            ),
-            flex: 3,
-          ),
-          Expanded(
-            child: FlatButton(
-              child: Text(''),
-              color: Colors.white,
-              onPressed: () {},
-            ),
-            flex: 1,
-          ),
-        ],
+          // color: Colors.lightGreen,
+          onPressed: () {
+            setState(() {
+              Fluttertoast.showToast(
+                  msg: "Đặt sân thành công",
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.green,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
+              Navigator.pop(context);
+            });
+          },
+        ),
       ),
     ]);
   }
@@ -203,7 +170,7 @@ class _BookingPitch extends State<BookingPitch> {
   List<TableRow> buildButtons() {
     List<TableRow> rows = [];
     String booker = 'Nguyen Van A';
-    bool check = false, choose = true;
+    bool check = false, choose = false;
     int id = 0;
     int time = 7;
 
@@ -225,15 +192,24 @@ class _BookingPitch extends State<BookingPitch> {
   Widget _buildButtonTime(int time, bool booked, String booker, bool choose) {
     return NeumorphicButton(
       onPressed: () {
-        if (booked != true) choose = !choose;
+        setState(() {
+          choose = !choose;
+        });
       },
       style: NeumorphicStyle(
-          color: booked ? Colors.grey : Colors.white,
-          border: NeumorphicBorder(color: Colors.black)),
-      padding: EdgeInsets.all(6),
+        color: choose ? Colors.grey[300] : Colors.white,
+        // color: Colors.green,
+        border: NeumorphicBorder(color: Colors.black, width: 2),
+      ),
       child: Container(
         padding: EdgeInsets.all(10.0),
-        child: Text(time.toString() + 'h', style: TextStyle(fontSize: 13)),
+        child: Text(
+          time.toString() + 'h',
+          style: TextStyle(
+            fontSize: 13,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }

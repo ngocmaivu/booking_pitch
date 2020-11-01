@@ -21,7 +21,7 @@ List<PitchModel> LIST_PITCH = [
   PitchModel(
       amount: 2,
       area: "Quan 9 ~ 4.5km",
-      name: " Tien",
+      name: "Sân bóng 5 người Hải Âu",
       price: 50000,
       star: 4.1,
       timeClose: 22,
@@ -29,7 +29,7 @@ List<PitchModel> LIST_PITCH = [
   PitchModel(
       amount: 2,
       area: "Quan 9",
-      name: "Tien",
+      name: "Sân bóng 7 người Hải Âu",
       price: 50000,
       star: 5,
       timeClose: 22,
@@ -37,7 +37,7 @@ List<PitchModel> LIST_PITCH = [
   PitchModel(
       amount: 2,
       area: "Quan 9",
-      name: "Tien",
+      name: "Sân bóng 11 người Hải Âu",
       price: 50000,
       star: 5,
       timeClose: 22,

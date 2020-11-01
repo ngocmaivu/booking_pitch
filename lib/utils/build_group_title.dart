@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class BuildGroupTitle extends StatelessWidget {
   const BuildGroupTitle({
@@ -18,7 +19,7 @@ class BuildGroupTitle extends StatelessWidget {
         border: Border(
           left: BorderSide(
             color: Colors.black,
-            width: 5,
+            width: 3,
           ),
         ),
       ),
@@ -28,19 +29,19 @@ class BuildGroupTitle extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(
+          NeumorphicText(
             this.title,
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w600,
+            style: NeumorphicStyle(
+              depth: 10,
+              color: Colors.black,
             ),
+            textStyle:
+                NeumorphicTextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
           isShowAll
               ? Text(
                   'Tất cả',
-                  style: TextStyle(
-                    fontSize: 20,
-                  ),
+                  style: TextStyle(fontSize: 20, color: Colors.green[800]),
                 )
               : Container(),
         ],

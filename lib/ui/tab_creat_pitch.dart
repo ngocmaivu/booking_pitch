@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class TabPitch extends StatefulWidget {
   @override
@@ -17,8 +18,8 @@ class _TabPitch extends State<TabPitch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightGreen,
+        appBar: NeumorphicAppBar(
+          // backgroundColor: Colors.lightGreen,
           title: Text('Thêm sân mới'),
         ),
         body: ListView(
@@ -37,14 +38,16 @@ class _TabPitch extends State<TabPitch> {
                   flex: 1,
                 ),
                 Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(8),
+                  child: Neumorphic(
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(8),
+                          ),
                         ),
+                        hintText: '',
                       ),
-                      hintText: '',
                     ),
                   ),
                   flex: 3,

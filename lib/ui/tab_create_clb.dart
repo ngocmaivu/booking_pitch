@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class TabCreateCLB extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ String changedText = 'Tham gia';
 String changedText1 = 'Tham gia';
 
 class _TabCreateCLB extends State<TabCreateCLB> {
-  double get radius => null;  
+  double get radius => null;
 
   @override
   void initState() {
@@ -22,390 +23,146 @@ class _TabCreateCLB extends State<TabCreateCLB> {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.lightGreen,
+          appBar: NeumorphicAppBar(
             title: Text('CLB'),
-            bottom: TabBar(
-              tabs: [
-                Tab(
-                  icon: Icon(Icons.search),
-                  text: 'Tìm CLB',
+            actions: [
+              NeumorphicButton(
+                style: NeumorphicStyle(
+                  shape: NeumorphicShape.concave,
+                  boxShape:
+                      NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+                  depth: 8,
+                  // lightSource: LightSource.bottomRight,
                 ),
-                Tab(
-                  icon: Icon(Icons.add_circle),
-                  text: 'Tạo CLB',
+                onPressed: () {},
+                child: Icon(
+                  Icons.add,
+                  color: Colors.grey,
                 ),
+              )
+            ],
+          ),
+          body: Container(
+            child: Column(
+              children: [
+                _buildSearchTextField(),
+                _buildCLB(),
+                _buildCLB(),
               ],
             ),
           ),
-          body: TabBarView(
-            children: [
-              ListView(
-                  padding: const EdgeInsets.fromLTRB(5, 0, 5, 0),
-                  children: [
-                    GestureDetector(
-                        child: SafeArea(
-                            child: SingleChildScrollView(
-                                child: Column(children: [
-                      _buildSearchTextField(),
-                      Container(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                // padding: EdgeInsets.all(8),
-                                child: CircleAvatar(
-                                  child: Text("FPT"),
-                                  backgroundColor: Colors.orange,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
-                                    'FPT Football Club',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.location_on,
-                                        color: Colors.lightGreen,
-                                      ),
-                                      Text('Khu CNC quận 9'),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              flex: 4,
-                            ),
-                            Expanded(
-                                child: RaisedButton(
-                                  color: Colors.white,
-                                  onPressed: () {
-                                    setState(() {
-                                      changedText = 'Chờ chấp thuận';
-                                    });
-                                  },
-                                  child: Container(
-                                    child: Text('${changedText}',
-                                        style: TextStyle(
-                                            fontSize: 14, color: Colors.black)),
-                                  ),
-                                ),
-                                flex: 3)
-                          ],
-                        ),
-                        decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.green,
-                              width: 1,
-                            ),
-                            left: BorderSide(
-                              color: Colors.green,
-                              width: 1,
-                            ),
-                            right: BorderSide(
-                              color: Colors.green,
-                              width: 1,
-                            ),
-                            top: BorderSide(
-                              color: Colors.green,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: Row(
-                          children: [
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                // padding: EdgeInsets.all(8),
-                                child: CircleAvatar(
-                                  child: Text("SPKT"),
-                                  backgroundColor: Colors.yellow,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: [
-                                  Text(
-                                    'CLB bóng đá SPKT',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Icon(
-                                        Icons.location_on,
-                                        color: Colors.lightGreen,
-                                      ),
-                                      Text('1 Võ Văn Ngân - Thủ Đức'),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              flex: 4,
-                            ),
-                            Expanded(
-                                child: RaisedButton(
-                                  color: Colors.white,
-                                  onPressed: () {
-                                    setState(() {
-                                      changedText1 = 'Chờ chấp thuận';
-                                    });
-                                  },
-                                  child: Container(
-                                    child: Text('${changedText1}',
-                                        style: TextStyle(
-                                            fontSize: 14, color: Colors.black)),
-                                  ),
-                                ),
-                                flex: 3)
-                          ],
-                        ),
-                        decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.circular(10),
-                          color: Colors.white,
-                          border: Border(
-                            bottom: BorderSide(
-                              color: Colors.green,
-                              width: 1,
-                            ),
-                            left: BorderSide(
-                              color: Colors.green,
-                              width: 1,
-                            ),
-                            right: BorderSide(
-                              color: Colors.green,
-                              width: 1,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ]))))
-                  ]),
-              ListView(
-                padding: EdgeInsets.all(19),
+        ));
+  }
+
+  Widget _buildCLB() {
+    return Neumorphic(
+        padding: EdgeInsets.all(10),
+        margin: EdgeInsets.all(15),
+        style: NeumorphicStyle(
+          shape: NeumorphicShape.concave,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
+          depth: 3,
+          color: Colors.white,
+          // lightSource: LightSource.topLeft,
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Neumorphic(
+                style: NeumorphicStyle(
+                  shape: NeumorphicShape.concave,
+                  boxShape: NeumorphicBoxShape.circle(),
+                  depth: 2,
+                  color: Colors.grey[100],
+                  // lightSource: LightSource.topLeft,
+                ),
+                child: CircleAvatar(
+                  child: Text(
+                    "FPT",
+                    style: TextStyle(color: Colors.black),
+                  ),
+                  backgroundColor: Colors.orange[200],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
+                  Text(
+                    'CLB bóng đá ĐH FPT',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Row(
                     children: [
-                      Expanded(
-                        child: Text(
-                          'Tên CLB',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        flex: 1,
+                      Icon(
+                        Icons.location_on,
+                        color: Colors.lightGreen,
                       ),
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8),
-                              ),
-                            ),
-                            hintText: '',
-                          ),
-                        ),
-                        flex: 3,
-                      ),
+                      Text('D2 Khu CNC quận 9'),
                     ],
                   ),
-                  SizedBox(
-                    height: 8,
-                  ),
                   Row(
                     children: [
-                      Expanded(
-                        child: Text(
-                          'Sân chính',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        flex: 1,
+                      Icon(
+                        Icons.timer,
+                        color: Colors.lightGreen,
                       ),
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8),
-                              ),
-                            ),
-                            hintText: '',
-                          ),
+                      Text(
+                        'Đội thể thao của trường',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
                         ),
-                        flex: 3,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Cấp độ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        flex: 1,
-                      ),
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8),
-                              ),
-                            ),
-                            hintText: '',
-                          ),
-                        ),
-                        flex: 3,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Liên hệ',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        flex: 1,
-                      ),
-                      Expanded(
-                        child: TextField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8),
-                              ),
-                            ),
-                            hintText: '',
-                          ),
-                        ),
-                        flex: 3,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Ghi chú',
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        flex: 1,
-                      ),
-                      Expanded(
-                        child: TextFormField(
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(8),
-                              ),
-                            ),
-                            hintText: '',
-                          ),
-                        ),
-                        flex: 3,
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: FlatButton(
-                          child: Text(''),
-                          color: Colors.white,
-                          onPressed: () {},
-                        ),
-                        flex: 1,
-                      ),
-                      Expanded(
-                        child: FlatButton(
-                          child: Text('THÊM MỚI'),
-                          color: Colors.lightGreen,
-                          onPressed: () {},
-                        ),
-                        flex: 3,
-                      ),
-                      Expanded(
-                        child: FlatButton(
-                          child: Text(''),
-                          color: Colors.white,
-                          onPressed: () {},
-                        ),
-                        flex: 1,
                       ),
                     ],
                   ),
                 ],
               ),
-            ],
-          ),
+              flex: 4,
+            ),
+            Expanded(
+                child: NeumorphicButton(
+                  // color: Colors.white38,
+                  onPressed: () {
+                    setState(() {
+                      changedText = 'Chờ chấp thuận';
+                    });
+                  },
+                  child: Container(
+                    child: Text('${changedText}',
+                        style: TextStyle(fontSize: 14, color: Colors.black)),
+                  ),
+                ),
+                flex: 2)
+          ],
         ));
   }
 
-  Padding _buildSearchTextField() {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(14, 5, 14, 10),
+  Widget _buildSearchTextField() {
+    return Neumorphic(
+      margin: EdgeInsets.all(11),
+      padding: EdgeInsets.only(left: 30, top: 5, bottom: 5),
+      style: NeumorphicStyle(
+        shape: NeumorphicShape.concave,
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+        depth: 8,
+        color: Colors.grey[100],
+        // lightSource: LightSource.topLeft,
+      ),
       child: TextField(
         decoration: InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(8),
-            ),
-          ),
+          border: InputBorder.none,
           hintText: 'Nhập tên đội...',
           suffixIcon: Icon(
-            Icons.search,
-            color: Colors.lightGreen,
+            Icons.search_rounded,
+            color: Colors.green[200],
+            size: 30,
           ),
         ),
       ),

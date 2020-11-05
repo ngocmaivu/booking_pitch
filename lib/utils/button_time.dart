@@ -23,7 +23,7 @@ class _TimeButtonState extends State<TimeButton> {
     _isSelect = false;
     depth = 20;
     if (booked) {
-      buttonColor = Colors.grey[200];
+      buttonColor = Colors.grey;
     }
   }
 
@@ -43,10 +43,6 @@ class _TimeButtonState extends State<TimeButton> {
         });
       },
       style: NeumorphicStyle(
-        // color: choose ? Colors.grey[300] : Colors.white,
-        // color: buttonColor,
-        // color: Colors.green,
-        // border: NeumorphicBorder(color: Colors.black, width: 2),
         depth: depth,
         intensity: 1,
         lightSource: LightSource.topLeft,

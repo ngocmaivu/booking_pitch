@@ -26,12 +26,14 @@ class _BookingPitch extends State<BookingPitch> {
           child: SafeArea(
             child: SingleChildScrollView(
               child: _buildContainer(
-                  'Sân bóng Hải Âu',
-                  'https://i.imgur.com/tpOU8bp.jpg',
-                  '112/3 Lê Văn Việt, Q9',
-                  '4.5',
-                  '0332756462',
-                  100000),
+                'Sân bóng Hải Âu',
+                'https://i.imgur.com/tpOU8bp.jpg',
+                '112/3 Lê Văn Việt, Q9',
+                '4.5',
+                '0332756462',
+                100000,
+                'Sân 7 người',
+              ),
             ),
           ),
         ),
@@ -40,7 +42,7 @@ class _BookingPitch extends State<BookingPitch> {
   }
 
   Widget _buildContainer(String namePitch, String imgURL, String address,
-      String rate, String phoneNumber, int price) {
+      String rate, String phoneNumber, int price, String type) {
     return Column(children: [
       SizedBox(
         height: 11,
@@ -72,6 +74,7 @@ class _BookingPitch extends State<BookingPitch> {
         height: 11,
       ),
       _buildRow('Địa chỉ: ', address),
+      _buildRow('Loại sân: ', type),
       Row(children: [
         Text('Đánh giá:       ',
             style: TextStyle(
@@ -179,24 +182,43 @@ class _BookingPitch extends State<BookingPitch> {
     List<TableRow> rows = [];
     String booker = 'Nguyen Van A';
     bool check = false, choose = false;
+    List<bool> booked = [
+      false,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ];
+    // int tmp = 0;
     int id = 0;
     int time = 7;
 
     for (var i = 0; i < 4; i++) {
       // new empty row
       List<Widget> rowChildren = [];
-
       for (var y = 0; y < 4; y++, id++) {
         // fill row with buttons
-        rowChildren.add(TimeButton(
-          booked: check,
-          time: time,
-        ));
+        rowChildren.add(
+          TimeButton(
+            booked: booked[time - 7],
+            time: time,
+          ),
+        );
         time++;
       }
       rows.add(new TableRow(children: rowChildren));
     }
-
     return rows;
   }
 

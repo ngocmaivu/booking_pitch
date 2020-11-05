@@ -1,16 +1,20 @@
 class PitchBooked {
   String namePitch;
-  int timeTo;
-  int timeFrom;
+  int time;
   bool booked;
 
-  PitchBooked({this.namePitch, this.timeTo, this.timeFrom, this.booked});
+  PitchBooked({this.namePitch, this.time, this.booked});
 }
 
 List<PitchBooked> LIST_BOOKED = [
   PitchBooked(
-      namePitch: 'Sân bóng 5 người Tiến Phát',
-      timeFrom: 8,
-      timeTo: 10,
-      booked: true)
+    namePitch: 'Sân bóng 5 người Hải Âu',
+    time: 7,
+    booked: true,
+  ),
+  PitchBooked(
+    namePitch: 'Sân bóng 5 người Hải Âu',
+    time: 12,
+    booked: true,
+  ),
 ];

@@ -15,7 +15,7 @@ class _DatePickerDemoState extends State<DatePickerDemo> {
       initialDate: selectedDate,
       firstDate: DateTime(2020),
       lastDate: DateTime(2025),
-      initialEntryMode: DatePickerEntryMode.input,
+      initialEntryMode: DatePickerEntryMode.calendar,
     );
     if ((picked != null && picked != selectedDate) &&
         picked.compareTo(selectedDate) > 0)

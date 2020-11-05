@@ -19,25 +19,25 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
   ),
   BottomNavigationBarItem(
     icon: Icon(
-      Icons.add_circle,
+      Icons.sports_basketball_rounded,
       color: Colors.grey,
       size: 26,
     ),
     activeIcon: Icon(
-      Icons.add_circle,
-      color: Colors.lightGreen,
+      Icons.sports_basketball_rounded,
+      color: Colors.green,
       size: 36,
     ),
   ),
   BottomNavigationBarItem(
     icon: Icon(
-      Icons.explicit,
+      Icons.camera_outlined,
       color: Colors.grey,
       size: 26,
     ),
     activeIcon: Icon(
-      Icons.explicit,
-      color: Colors.lightGreen,
+      Icons.camera_outlined,
+      color: Colors.green,
       size: 36,
     ),
   ),
@@ -49,7 +49,7 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
     ),
     activeIcon: Icon(
       Icons.notifications,
-      color: Colors.lightGreen,
+      color: Colors.green,
       size: 36,
     ),
   ),
@@ -61,7 +61,7 @@ const List<BottomNavigationBarItem> BOTTOM_NAVIGATION_BAR_ITEMS = [
     ),
     activeIcon: Icon(
       Icons.person,
-      color: Colors.lightGreen,
+      color: Colors.green,
       size: 36,
     ),
   ),

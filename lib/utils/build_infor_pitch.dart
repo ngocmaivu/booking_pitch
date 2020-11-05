@@ -86,7 +86,7 @@ class Pitch extends StatelessWidget {
                     fontSize: 14, fontWeight: FontWeight.w500),
               ),
             ]),
-            if (price <= promotion)
+            if (promotion == 0)
               Row(
                 children: [
                   Icon(
@@ -99,7 +99,7 @@ class Pitch extends StatelessWidget {
                   ),
                 ],
               ),
-            if (price > promotion)
+            if (price > promotion && promotion != 0)
               Column(
                 children: [
                   Row(
@@ -123,7 +123,7 @@ class Pitch extends StatelessWidget {
                         color: Colors.red,
                       ),
                       Text(
-                        oCcy.format(this.price).toString() + ' VND/h',
+                        oCcy.format(this.promotion).toString() + ' VND/h',
                         style: TextStyle(
                             color: Colors.red, fontWeight: FontWeight.w900),
                       ),

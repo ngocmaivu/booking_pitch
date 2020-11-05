@@ -2,13 +2,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:sporttt/ui/tab_home_screen.dart';
+import 'package:sporttt/ui/tab_history_book.dart';
+import 'package:sporttt/utils/button_time.dart';
 import 'package:sporttt/utils/date_time_picker.dart';
+import 'package:intl/intl.dart';
 
 class BookingPitch extends StatefulWidget {
   @override
   _BookingPitch createState() => _BookingPitch();
 }
+
+final NumberFormat oCcy = new NumberFormat("#,##0.0", "en_US");
 
 class _BookingPitch extends State<BookingPitch> {
   @override
@@ -22,7 +26,7 @@ class _BookingPitch extends State<BookingPitch> {
           child: SafeArea(
             child: SingleChildScrollView(
               child: _buildContainer(
-                  'Sân bóng Tiến Phát',
+                  'Sân bóng Hải Âu',
                   'https://i.imgur.com/tpOU8bp.jpg',
                   '112/3 Lê Văn Việt, Q9',
                   '4.5',
@@ -90,7 +94,7 @@ class _BookingPitch extends State<BookingPitch> {
       SizedBox(
         height: 5,
       ),
-      _buildRow('Giá: ', price.toString() + ' VND'),
+      _buildRow('Giá: ', oCcy.format(price).toString() + ' VND'),
       Row(
         children: [
           Text('Chọn ngày    ',
@@ -141,7 +145,11 @@ class _BookingPitch extends State<BookingPitch> {
                   backgroundColor: Colors.green,
                   textColor: Colors.white,
                   fontSize: 16.0);
-              Navigator.pop(context);
+              Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => TabHistoryBook(),
+                  ));
             });
           },
         ),
@@ -180,7 +188,10 @@ class _BookingPitch extends State<BookingPitch> {
 
       for (var y = 0; y < 4; y++, id++) {
         // fill row with buttons
-        rowChildren.add(_buildButtonTime(time, check, booker, choose));
+        rowChildren.add(TimeButton(
+          booked: check,
+          time: time,
+        ));
         time++;
       }
       rows.add(new TableRow(children: rowChildren));
@@ -197,12 +208,13 @@ class _BookingPitch extends State<BookingPitch> {
         });
       },
       style: NeumorphicStyle(
-        color: choose ? Colors.grey[300] : Colors.white,
+        // color: choose ? Colors.grey[300] : Colors.white,
         // color: Colors.green,
         border: NeumorphicBorder(color: Colors.black, width: 2),
       ),
       child: Container(
         padding: EdgeInsets.all(10.0),
+        color: choose ? Colors.grey[300] : Colors.red,
         child: Text(
           time.toString() + 'h',
           style: TextStyle(

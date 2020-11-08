@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sporttt/ui/tab_creat_pitch.dart';
 import 'package:sporttt/ui/tab_mana_booked_pitch_admin.dart';
 
@@ -15,14 +16,13 @@ class _PitchManagement extends State<PitchManagement> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightGreen,
+      appBar: NeumorphicAppBar(
         title: Text('Quản lí sân'),
       ),
       body: Container(
         child: Column(
           children: <Widget>[
-            Text(''),
+            // Text(''),
             _buildListPitch(
                 'https://i.imgur.com/tpOU8bp.jpg', 'Sân bóng ABC', 'Quận 9', 1),
             _buildListPitch(
@@ -31,6 +31,9 @@ class _PitchManagement extends State<PitchManagement> {
                 'https://i.imgur.com/tpOU8bp.jpg', 'Sân bóng ABC', 'Quận 9', 3),
             _buildListPitch(
                 'https://i.imgur.com/tpOU8bp.jpg', 'Sân bóng ABC', 'Quận 9', 4),
+            SizedBox(
+              height: 15,
+            ),
             addPitch(),
           ],
         ),
@@ -39,37 +42,38 @@ class _PitchManagement extends State<PitchManagement> {
   }
 
   Widget addPitch() {
-    return Row(
-      children: [
-        Expanded(
-          child: FlatButton(
-            child: Text(''),
-            color: Colors.white,
-            onPressed: () {},
-          ),
-          flex: 1,
+    return Neumorphic(
+      style: NeumorphicStyle(
+        shape: NeumorphicShape.concave,
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+        depth: 8,
+        color: Colors.green[200],
+        // lightSource: LightSource.topLeft,
+      ),
+      child: NeumorphicButton(
+        style: NeumorphicStyle(color: Colors.green[200]),
+        child: Text(
+          'THÊM SÂN',
+          style: TextStyle(fontSize: 20),
         ),
-        Expanded(
-          child: FlatButton(
-            child: Text('THÊM MỚI'),
-            color: Colors.lightGreen,
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => TabPitch(),
-              ));
-            },
-          ),
-          flex: 3,
-        ),
-        Expanded(
-          child: FlatButton(
-            child: Text(''),
-            color: Colors.white,
-            onPressed: () {},
-          ),
-          flex: 1,
-        ),
-      ],
+        // color: Colors.lightGreen,
+        onPressed: () {
+          setState(() {
+            Fluttertoast.showToast(
+                msg: "Thêm sân thành công",
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0);
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => TabAddPitch(),
+              ),
+            );
+          });
+        },
+      ),
     );
   }
 
@@ -80,11 +84,8 @@ class _PitchManagement extends State<PitchManagement> {
               builder: (context) => BookingPitchManagement(),
             )),
         child: Neumorphic(
-            style: NeumorphicStyle(
-                // color: Colors.grey[200],
-                color: Colors.white,
-                border: NeumorphicBorder(color: Colors.black)),
             padding: EdgeInsets.all(8),
+            margin: EdgeInsets.all(8),
             child: Row(
               children: [
                 Expanded(

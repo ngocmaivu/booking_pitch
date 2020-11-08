@@ -47,18 +47,6 @@ class _BookingPitch extends State<BookingPitch> {
       SizedBox(
         height: 11,
       ),
-      // Container(
-      //   height: 100,
-      //   // color: Colors.grey,
-      //   decoration: BoxDecoration(
-      //       image: DecorationImage(
-      //     image: Image.network(imgURL).image,
-      //     fit: BoxFit.cover,
-      //   )),
-      // ),
-      // SizedBox(
-      //   height: 11,
-      // ),
       NeumorphicText(
         namePitch,
         textStyle: NeumorphicTextStyle(

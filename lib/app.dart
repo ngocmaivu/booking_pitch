@@ -8,7 +8,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return NeumorphicApp(
       debugShowCheckedModeBanner: false,
-      title: 'Promotion Platform',
+      title: 'Pitch Booking',
       themeMode: ThemeMode.light,
       theme: NeumorphicThemeData(
         baseColor: Color.fromRGBO(236, 240, 243, 1),

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:sporttt/ui/tab_creat_pitch.dart';
+import 'package:sporttt/ui/tab_owner.dart';
 
 class BookingPitchManagement extends StatefulWidget {
   @override
@@ -14,8 +16,7 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightGreen,
+      appBar: NeumorphicAppBar(
         title: Text('Quản lí đặt sân'),
       ),
       body: Container(
@@ -46,6 +47,9 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
               ],
             ),
             Text('Nhấn vào để xem chi tiết '),
+            SizedBox(
+              height: 20,
+            ),
             deletePitch(),
           ],
         ),
@@ -123,18 +127,6 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
     return Row(
       children: [
         Expanded(
-          flex: 2,
-          child: Container(
-            height: 75,
-            padding: EdgeInsets.all(8),
-            decoration: BoxDecoration(
-                image: DecorationImage(
-              image: Image.network(imgURL).image,
-              // fit: BoxFit.cover,
-            )),
-          ),
-        ),
-        Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -142,14 +134,14 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
               Text(
                 pitchName,
                 style: TextStyle(
-                  fontSize: 17,
+                  fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               Text(
                 address,
                 style: TextStyle(
-                  fontSize: 13,
+                  fontSize: 16,
                 ),
               ),
             ],
@@ -161,33 +153,38 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
   }
 
   Widget deletePitch() {
-    return Row(
-      children: [
-        Expanded(
-          child: FlatButton(
-            child: Text(''),
-            color: Colors.white,
-            onPressed: () {},
-          ),
-          flex: 1,
+    return Neumorphic(
+      style: NeumorphicStyle(
+        shape: NeumorphicShape.concave,
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+        depth: 8,
+        color: Colors.green[200],
+        // lightSource: LightSource.topLeft,
+      ),
+      child: NeumorphicButton(
+        style: NeumorphicStyle(color: Colors.green[200]),
+        child: Text(
+          'XÓA SÂN',
+          style: TextStyle(fontSize: 20),
         ),
-        Expanded(
-          child: FlatButton(
-            child: Text('XÓA SÂN'),
-            color: Colors.lightGreen,
-            onPressed: () {},
-          ),
-          flex: 3,
-        ),
-        Expanded(
-          child: FlatButton(
-            child: Text(''),
-            color: Colors.white,
-            onPressed: () {},
-          ),
-          flex: 1,
-        ),
-      ],
+        // color: Colors.lightGreen,
+        onPressed: () {
+          setState(() {
+            Fluttertoast.showToast(
+                msg: "Xóa sân thành công",
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0);
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => PitchManagement(),
+              ),
+            );
+          });
+        },
+      ),
     );
   }
 }

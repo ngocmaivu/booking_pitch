@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class TabNotificationAdmin extends StatefulWidget {
   @override
@@ -15,8 +16,7 @@ class _TabNotificationAdmin extends State<TabNotificationAdmin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lightGreen,
+      appBar: NeumorphicAppBar(
         title: Text('Thông báo'),
       ),
       body: SafeArea(
@@ -29,6 +29,10 @@ class _TabNotificationAdmin extends State<TabNotificationAdmin> {
                       bookerName: 'Nguyen Van A',
                       pitchName: 'San ABC',
                       time: 'Thứ Ba, 14:45'),
+                  _buildMessage(
+                      bookerName: 'Nguyen Van B',
+                      pitchName: 'San XYZ',
+                      time: 'Thứ Tư, 11:04'),
                 ],
               ),
             ),
@@ -85,11 +89,16 @@ class _TabNotificationAdmin extends State<TabNotificationAdmin> {
     return GestureDetector(
         onTap: () => _showNotiDetail(
             bookerName, pitchName, time, price, timeFrom, timeTo),
-        child: Container(
-          // width: ,
-          height: 100,
+        child: Neumorphic(
           padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(border: Border.all(color: Colors.black)),
+          margin: EdgeInsets.all(10),
+          style: NeumorphicStyle(
+            shape: NeumorphicShape.concave,
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
+            depth: 3,
+            color: Colors.white,
+            // lightSource: LightSource.topLeft,
+          ),
           child: Row(
             children: [
               Expanded(
@@ -104,12 +113,17 @@ class _TabNotificationAdmin extends State<TabNotificationAdmin> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text(bookerName + ' vừa đặt sân ' + pitchName),
+                    Text(
+                      bookerName + ' vừa đặt sân ' + pitchName,
+                      style: TextStyle(
+                        fontSize: 17,
+                      ),
+                    ),
                     Text(
                       time,
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 14,
                       ),
                     ),
                   ],

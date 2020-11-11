@@ -26,11 +26,20 @@ class _PitchManagement extends State<PitchManagement> {
             _buildListPitch(
                 'https://i.imgur.com/tpOU8bp.jpg', 'Sân bóng ABC', 'Quận 9', 1),
             _buildListPitch(
-                'https://i.imgur.com/tpOU8bp.jpg', 'Sân bóng ABC', 'Quận 9', 2),
+                'https://images.foody.vn/res/g23/221306/prof/s576x330/foody-mobile-10665737_54096537604-214-635944317843677527.jpg',
+                'Sân bóng Hải Âu',
+                'Quận 9',
+                2),
             _buildListPitch(
-                'https://i.imgur.com/tpOU8bp.jpg', 'Sân bóng ABC', 'Quận 9', 3),
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSp87QSHXl6JIkQ0XifT9Q9gGae0-tCol7u9A&usqp=CAU',
+                'Sân bóng Phát Đạt',
+                'Quận 9',
+                3),
             _buildListPitch(
-                'https://i.imgur.com/tpOU8bp.jpg', 'Sân bóng ABC', 'Quận 9', 4),
+                'https://theparanormalanalyst.com/wp-content/uploads/2019/10/kich-thuoc-san-bong-da-5-nguoi-1024x543.png',
+                'Sân bóng Thành Công',
+                'Quận 9',
+                4),
             SizedBox(
               height: 15,
             ),
@@ -59,12 +68,6 @@ class _PitchManagement extends State<PitchManagement> {
         // color: Colors.lightGreen,
         onPressed: () {
           setState(() {
-            Fluttertoast.showToast(
-                msg: "Thêm sân thành công",
-                timeInSecForIosWeb: 1,
-                backgroundColor: Colors.green,
-                textColor: Colors.white,
-                fontSize: 16.0);
             Navigator.push(
               context,
               CupertinoPageRoute(

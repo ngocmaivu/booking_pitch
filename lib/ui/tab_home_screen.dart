@@ -140,7 +140,7 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-        depth: 8,
+        depth: 5,
         color: Colors.white,
         // lightSource: LightSource.topLeft,
       ),
@@ -170,7 +170,7 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
             style: NeumorphicStyle(
               shape: NeumorphicShape.concave,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              depth: 8,
+              depth: 5,
               lightSource: LightSource.topLeft,
             ),
             child: CircleAvatar(
@@ -189,7 +189,7 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
             style: NeumorphicStyle(
               shape: NeumorphicShape.concave,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              depth: 8,
+              depth: 5,
               lightSource: LightSource.topLeft,
             ),
             child: CircleAvatar(
@@ -208,7 +208,7 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
             style: NeumorphicStyle(
               shape: NeumorphicShape.concave,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              depth: 8,
+              depth: 5,
               lightSource: LightSource.topLeft,
             ),
             child: CircleAvatar(

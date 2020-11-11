@@ -37,11 +37,9 @@ class Pitch extends StatelessWidget {
         // width: 252,
         margin: EdgeInsets.all(16),
         style: NeumorphicStyle(
-          // shape: NeumorphicShape.concave,
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-          depth: 8,
+          depth: 5,
           lightSource: LightSource.topLeft,
-          // border: NeumorphicBorder(width: 1, color: Colors.black)
         ),
 
         child: Column(
@@ -51,20 +49,25 @@ class Pitch extends StatelessWidget {
               // style: NeumorphicStyle(
               // border: NeumorphicBorder(width: 1, color: Colors.black)),
               child: Container(
-                  width: 250,
-                  height: 77,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
+                width: 250,
+                height: 77,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
                     image: Image.network(image).image,
                     fit: BoxFit.cover,
-                  ))),
+                  ),
+                ),
+              ),
+              style: NeumorphicStyle(
+                depth: 2,
+              ),
             ),
             Padding(
               padding: EdgeInsets.all(2),
               child: NeumorphicText(
                 this.namePitch,
                 style: NeumorphicStyle(
-                  depth: 10,
+                  depth: 0,
                   color: Colors.black,
                 ),
                 textStyle: NeumorphicTextStyle(
@@ -79,7 +82,7 @@ class Pitch extends StatelessWidget {
               NeumorphicText(
                 this.address + ' ~ ' + local.toString() + 'km',
                 style: NeumorphicStyle(
-                  depth: 10,
+                  depth: 0,
                   color: Colors.black,
                 ),
                 textStyle: NeumorphicTextStyle(

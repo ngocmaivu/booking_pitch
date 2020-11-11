@@ -39,7 +39,7 @@ class _LognPageState extends State<LognPage> {
         decoration: InputDecoration(
             prefixIcon: Icon(
               Icons.phone,
-              color: Colors.lightGreen,
+              color: Colors.green[200],
             ),
             labelText: 'Tên đăng nhập'),
       ),
@@ -51,6 +51,7 @@ class _LognPageState extends State<LognPage> {
       padding: EdgeInsets.all(8),
       child: TextFormField(
         keyboardType: TextInputType.text,
+        obscureText: true,
         onChanged: (value) {
           setState(() {
             password = value;
@@ -59,7 +60,7 @@ class _LognPageState extends State<LognPage> {
         decoration: InputDecoration(
             prefixIcon: Icon(
               Icons.lock,
-              color: Colors.lightGreen,
+              color: Colors.green[200],
             ),
             labelText: 'Mật khẩu'),
       ),
@@ -94,7 +95,7 @@ class _LognPageState extends State<LognPage> {
           margin: EdgeInsets.only(bottom: 20),
           child: RaisedButton(
             elevation: 5.0,
-            color: Colors.lightGreen,
+            color: Colors.green[200],
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30.0),
             ),
@@ -134,7 +135,7 @@ class _LognPageState extends State<LognPage> {
             Radius.circular(20),
           ),
           child: Container(
-            height: MediaQuery.of(context).size.height * 0.4,
+            height: MediaQuery.of(context).size.height * 0.5,
             width: MediaQuery.of(context).size.width * 0.7,
             decoration: BoxDecoration(
               color: Colors.white,
@@ -159,6 +160,9 @@ class _LognPageState extends State<LognPage> {
                 ),
                 _buildPhoneNumberRow(),
                 _buildPasswordRow(),
+                SizedBox(
+                  height: 20,
+                ),
                 _buildLoginButton(),
               ],
             ),
@@ -181,29 +185,14 @@ class _LognPageState extends State<LognPage> {
               style: TextStyle(
                 fontSize: MediaQuery.of(context).size.height / 25,
                 fontWeight: FontWeight.bold,
-                color: Colors.lightGreen,
-              ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.7,
-            width: MediaQuery.of(context).size.width,
-            child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: Image.network("https://i.imgur.com/tpOU8bp.jpg").image,
-                ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: const Radius.circular(70),
-                  bottomRight: const Radius.circular(70),
-                ),
+                color: Colors.green[200],
               ),
             ),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              _buildLogo(),
+              // _buildLogo(),
               SizedBox(
                 height: 20,
               ),

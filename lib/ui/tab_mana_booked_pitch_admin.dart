@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:sporttt/ui/tab_creat_pitch.dart';
 import 'package:sporttt/ui/tab_owner.dart';
 
 class BookingPitchManagement extends StatefulWidget {
@@ -22,8 +21,8 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
       body: Container(
         child: Column(
           children: <Widget>[
-            _buildListPitch(
-                'https://i.imgur.com/tpOU8bp.jpg', 'Sân bóng ABC', 'Quận 9'),
+            _buildListPitch('https://i.imgur.com/tpOU8bp.jpg',
+                'Sân bóng 5 người Hải Âu', 'Quận 9'),
             SizedBox(
               height: 10,
             ),
@@ -61,6 +60,24 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
     List<TableRow> rows = [];
     String booker = 'Nguyen Van A';
     bool check = false;
+    List<bool> checked = [
+      false,
+      true,
+      true,
+      true,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ];
     int id = 0;
     int time = 7;
 
@@ -70,7 +87,7 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
 
       for (var y = 0; y < 4; y++, id++) {
         // fill row with buttons
-        rowChildren.add(_buildButtonTime(time, check, booker));
+        rowChildren.add(_buildButtonTime(time, checked[time - 7], booker));
         time++;
       }
       rows.add(new TableRow(children: rowChildren));
@@ -79,23 +96,25 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
     return rows;
   }
 
-  _showBookerInfor(String booker) {
+  _showBookerInfor(String booker, int id) {
     return showDialog(
       context: context,
       barrierDismissible: false, // user must tap button!
       builder: (BuildContext context) {
         return CupertinoAlertDialog(
           title: Text('Sân đã được đặt'),
-          content: Text('Người đặt: ' + booker),
+          content: Column(
+            children: [
+              Text('Người đặt: ' + booker),
+              Text('Sân bóng 5 người Hải Âu '),
+              Text('Giờ nhận sân: 13h'),
+              Text('Giờ trả sân: 15h'),
+              Text('Tổng tiền: 300 000 VND')
+            ],
+          ),
           actions: <Widget>[
             CupertinoDialogAction(
-              child: Text('Hủy đặt'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            CupertinoDialogAction(
-              child: Text('Cho phép'),
+              child: Text('Từ chối'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -110,15 +129,22 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
     return NeumorphicButton(
       // color: Colors.white,
       style: NeumorphicStyle(
+          depth: 0,
           color: booked ? Colors.grey : Colors.white,
           border: NeumorphicBorder(color: Colors.black)),
       onPressed: () {
-        if (booked == true) _showBookerInfor(booker);
+        if (booked == true) _showBookerInfor(booker, time - 7);
       },
       padding: EdgeInsets.all(6),
       child: Container(
         padding: EdgeInsets.all(10.0),
-        child: Text(time.toString() + 'h', style: TextStyle(fontSize: 13)),
+        child: Text(
+          time.toString() + 'h',
+          style: TextStyle(
+            fontSize: 13,
+          ),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }

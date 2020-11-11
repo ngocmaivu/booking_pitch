@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:sporttt/ui/tab_confirm_booked.dart';
 import 'package:sporttt/ui/tab_history_book.dart';
 import 'package:sporttt/utils/button_time.dart';
 import 'package:sporttt/utils/date_time_picker.dart';
@@ -32,7 +33,7 @@ class _BookingPitch extends State<BookingPitch> {
                 '4.5',
                 '0332756462',
                 100000,
-                'Sân 7 người',
+                'Sân 5 người',
               ),
             ),
           ),
@@ -44,14 +45,11 @@ class _BookingPitch extends State<BookingPitch> {
   Widget _buildContainer(String namePitch, String imgURL, String address,
       String rate, String phoneNumber, int price, String type) {
     return Column(children: [
-      SizedBox(
-        height: 11,
-      ),
       NeumorphicText(
         namePitch,
         textStyle: NeumorphicTextStyle(
           fontWeight: FontWeight.bold,
-          fontSize: 30,
+          fontSize: 28,
         ),
         style: NeumorphicStyle(
           depth: 10,
@@ -98,26 +96,57 @@ class _BookingPitch extends State<BookingPitch> {
       ),
       Text('Chọn giờ:',
           style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20)),
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 19)),
       SizedBox(
         height: 11,
       ),
-      // new Table(
-      //   // border: TableBorder.all(),
-      //   children: buildButtons(),
-      // ),
       new Table(
         children: buildButtons(),
       ),
-      SizedBox(
-        height: 30,
+      Row(
+        children: [
+          SizedBox(
+            width: 200,
+          ),
+          Icon(
+            Icons.circle,
+            color: Colors.greenAccent,
+          ),
+          Text("Sân đang được chọn")
+        ],
       ),
-
+      Row(
+        children: [
+          SizedBox(
+            width: 200,
+          ),
+          Icon(
+            Icons.circle,
+            color: Colors.grey,
+          ),
+          Text("Sân đã được chọn")
+        ],
+      ),
+      Row(
+        children: [
+          SizedBox(
+            width: 200,
+          ),
+          Icon(
+            Icons.circle,
+            color: Colors.white,
+          ),
+          Text("Sân trống")
+        ],
+      ),
+      SizedBox(
+        height: 5,
+      ),
       Neumorphic(
         style: NeumorphicStyle(
           shape: NeumorphicShape.concave,
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-          depth: 8,
+          depth: 3,
           color: Colors.green[200],
           // lightSource: LightSource.topLeft,
         ),
@@ -139,7 +168,7 @@ class _BookingPitch extends State<BookingPitch> {
               Navigator.push(
                   context,
                   CupertinoPageRoute(
-                    builder: (context) => TabHistoryBook(),
+                    builder: (context) => TabConfirm(),
                   ));
             });
           },
@@ -192,6 +221,7 @@ class _BookingPitch extends State<BookingPitch> {
     int id = 0;
     int time = 7;
 
+    String temp = '';
     for (var i = 0; i < 4; i++) {
       // new empty row
       List<Widget> rowChildren = [];
@@ -201,6 +231,7 @@ class _BookingPitch extends State<BookingPitch> {
           TimeButton(
             booked: booked[time - 7],
             time: time,
+            // service: temp,
           ),
         );
         time++;

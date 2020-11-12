@@ -13,36 +13,28 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: NeumorphicAppBar(
-      //   title: Text('Trang chủ'),
-      // ),
       body: SafeArea(
         child: Stack(
           children: [
-            // GestureDetector(
             GestureDetector(
               child: SafeArea(
                 child: SingleChildScrollView(
-                  // controller: _scrollController,
                   child: Column(
                     children: [
                       _buildSearchTextField(),
-                      SizedBox(
-                        height: 25,
-                      ),
+                      // CircleAvatar(
+                      //   backgroundImage:
+                      //       NetworkImage("https://i.imgur.com/zismATK.png"),
+                      //   backgroundColor: Colors.lightGreen,
+                      //   radius: 25,
+                      // ),
                       _buildIcons(),
-                      SizedBox(
-                        height: 15,
-                      ),
                       BuildGroupTitle(
                         title: 'Sân quanh đây',
                         isShowAll: true,
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       Container(
-                        height: 250,
+                        height: 220,
                         child: ListView.builder(
                           itemBuilder: (context, index) => Pitch(
                             namePitch: LIST_PITCH_LOCAL[index].name,
@@ -57,18 +49,12 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                           scrollDirection: Axis.horizontal,
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       BuildGroupTitle(
                         title: 'Đang khuyến mãi',
                         isShowAll: true,
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       Container(
-                        height: 250,
+                        height: 240,
                         child: ListView.builder(
                           itemBuilder: (context, index) => Pitch(
                             namePitch: LIST_PITCH_PROMOTION[index].name,
@@ -83,18 +69,12 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                           scrollDirection: Axis.horizontal,
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       BuildGroupTitle(
                         title: 'Sân được đánh giá cao',
                         isShowAll: true,
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
                       Container(
-                        height: 250,
+                        height: 220,
                         child: ListView.builder(
                           itemBuilder: (context, index) => Pitch(
                             namePitch: LIST_PITCH_RATE[index].name,
@@ -135,22 +115,24 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
 
   Widget _buildSearchTextField() {
     return Neumorphic(
-      margin: EdgeInsets.all(11),
-      padding: EdgeInsets.only(left: 30, top: 5, bottom: 5),
+      margin: EdgeInsets.fromLTRB(5, 20, 5, 25),
+      padding: EdgeInsets.only(
+        left: 20,
+      ),
       style: NeumorphicStyle(
         shape: NeumorphicShape.concave,
         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-        depth: 5,
+        depth: 1,
         color: Colors.white,
         // lightSource: LightSource.topLeft,
       ),
-      child: TextField(
+      child: TextFormField(
         decoration: InputDecoration(
           border: InputBorder.none,
           hintText: 'Nhập tên sân...',
           suffixIcon: Icon(
             Icons.search_rounded,
-            color: Colors.green[200],
+            color: Colors.green,
             size: 30,
           ),
         ),
@@ -170,7 +152,7 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
             style: NeumorphicStyle(
               shape: NeumorphicShape.concave,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              depth: 5,
+              depth: 0,
               lightSource: LightSource.topLeft,
             ),
             child: CircleAvatar(
@@ -178,18 +160,18 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                 Icons.add,
                 color: Colors.white,
               ),
-              backgroundColor: Colors.green[200],
-              maxRadius: 30,
+              backgroundColor: Colors.green,
+              maxRadius: 25,
             ),
           ),
           SizedBox(
-            width: 40,
+            width: 25,
           ),
           Neumorphic(
             style: NeumorphicStyle(
               shape: NeumorphicShape.concave,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              depth: 5,
+              depth: 0,
               lightSource: LightSource.topLeft,
             ),
             child: CircleAvatar(
@@ -197,18 +179,18 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                 Icons.location_on,
                 color: Colors.white,
               ),
-              backgroundColor: Colors.green[200],
-              maxRadius: 30,
+              backgroundColor: Colors.green,
+              maxRadius: 25,
             ),
           ),
           SizedBox(
-            width: 40,
+            width: 25,
           ),
           Neumorphic(
             style: NeumorphicStyle(
               shape: NeumorphicShape.concave,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              depth: 5,
+              depth: 0,
               lightSource: LightSource.topLeft,
             ),
             child: CircleAvatar(
@@ -216,18 +198,18 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                 Icons.star,
                 color: Colors.yellow,
               ),
-              backgroundColor: Colors.green[200],
-              maxRadius: 30,
+              backgroundColor: Colors.green,
+              maxRadius: 25,
             ),
           ),
           SizedBox(
-            width: 40,
+            width: 25,
           ),
           Neumorphic(
             style: NeumorphicStyle(
               shape: NeumorphicShape.concave,
               boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-              depth: 8,
+              depth: 0,
               lightSource: LightSource.topLeft,
             ),
             child: CircleAvatar(
@@ -235,8 +217,27 @@ class _TabHomeScreenState extends State<TabHomeScreen> {
                 Icons.more_time,
                 color: Colors.white,
               ),
-              backgroundColor: Colors.green[200],
-              maxRadius: 30,
+              backgroundColor: Colors.green,
+              maxRadius: 25,
+            ),
+          ),
+          SizedBox(
+            width: 25,
+          ),
+          Neumorphic(
+            style: NeumorphicStyle(
+              shape: NeumorphicShape.concave,
+              boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
+              depth: 0,
+              lightSource: LightSource.topLeft,
+            ),
+            child: CircleAvatar(
+              child: Icon(
+                Icons.assistant_photo_rounded,
+                color: Colors.white,
+              ),
+              backgroundColor: Colors.green,
+              maxRadius: 25,
             ),
           ),
         ],

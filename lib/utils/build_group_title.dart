@@ -25,23 +25,23 @@ class BuildGroupTitle extends StatelessWidget {
       ),
       width: double.maxFinite,
       padding: EdgeInsets.symmetric(horizontal: 8),
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.fromLTRB(15, 15, 5, 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           NeumorphicText(
             this.title,
             style: NeumorphicStyle(
-              depth: 10,
+              depth: 0,
               color: Colors.black,
             ),
             textStyle:
-                NeumorphicTextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                NeumorphicTextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           isShowAll
               ? Text(
                   'Tất cả',
-                  style: TextStyle(fontSize: 20, color: Colors.green[800]),
+                  style: TextStyle(fontSize: 18, color: Colors.green[800]),
                 )
               : Container(),
         ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 class DatePickerDemo extends StatefulWidget {
@@ -17,40 +18,38 @@ class _DatePickerDemoState extends State<DatePickerDemo> {
       lastDate: DateTime(2025),
       initialEntryMode: DatePickerEntryMode.calendar,
     );
-    if ((picked != null) && picked.compareTo(selectedDate) > 0)
+    if ((picked != null && picked.compareTo(selectedDate) != -1))
       setState(() {
         selectedDate = picked;
       });
-    else
+    else {
       Fluttertoast.showToast(
-          msg: "Ngày không hợp lệ!!!",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.CENTER,
+          msg: "Ngày không hợp lệ",
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.red,
           textColor: Colors.white,
           fontSize: 16.0);
+      selectedDate = DateTime.now();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(30, 15, 0, 15),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          RaisedButton(
-            onPressed: () => _selectDate(context),
-            child: Text(
-              "${selectedDate.toLocal()}".split(' ')[0],
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20),
-            ),
-            color: Colors.white70,
-          ),
-        ],
+    return NeumorphicButton(
+      style: NeumorphicStyle(
+        depth: 2,
+        border: NeumorphicBorder(width: 1),
+      ),
+      onPressed: () => _selectDate(context),
+
+      // minDistance: 250,
+      child: Text(
+        "${selectedDate.toLocal()}".split(' ')[0],
+        style: TextStyle(
+          color: Colors.black,
+          fontSize: 19,
+        ),
+        textWidthBasis: TextWidthBasis.longestLine,
       ),
     );
   }

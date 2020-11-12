@@ -32,7 +32,7 @@ List<PitchModel> LIST_PITCH_LOCAL = [
   ),
   PitchModel(
     local: 3.5,
-    name: "Sân bóng 5 người Liên Phường",
+    name: "Sân bóng 5 người Liên Hợp",
     price: 100000,
     rate: 2.4,
     image:
@@ -52,7 +52,7 @@ List<PitchModel> LIST_PITCH_LOCAL = [
   ),
   PitchModel(
     local: 4.1,
-    name: "Sân bóng 11 người Trung Trực",
+    name: "Sân bóng 11 người Trung",
     price: 150000,
     rate: 4.3,
     image: "https://i.imgur.com/i10lB5U.jpg",
@@ -71,7 +71,7 @@ List<PitchModel> LIST_PITCH_LOCAL = [
   ),
   PitchModel(
     local: 5,
-    name: "Sân bóng 7 người Huy Hoàng",
+    name: "Sân bóng 7 người 177",
     price: 130000,
     rate: 3.7,
     image: "https://i.imgur.com/vjtCDBQ.jpg",
@@ -83,7 +83,7 @@ List<PitchModel> LIST_PITCH_LOCAL = [
 List<PitchModel> LIST_PITCH_RATE = [
   PitchModel(
     local: 3.5,
-    name: "Sân bóng 5 người Vương Thịnh",
+    name: "Sân bóng 5 người Vương",
     price: 125000,
     rate: 4.1,
     image:
@@ -103,7 +103,7 @@ List<PitchModel> LIST_PITCH_RATE = [
   ),
   PitchModel(
     local: 3.5,
-    name: "Sân bóng 11 người Liên Phường",
+    name: "Sân bóng 11 người Liên",
     price: 170000,
     rate: 4.5,
     image:
@@ -136,7 +136,7 @@ List<PitchModel> LIST_PITCH_RATE = [
 List<PitchModel> LIST_PITCH_PROMOTION = [
   PitchModel(
     local: 11.5,
-    name: "Sân bóng 11 người Thịnh Phát",
+    name: "Sân bóng 11 người Phát",
     price: 165000,
     rate: 4.1,
     image:
@@ -166,7 +166,7 @@ List<PitchModel> LIST_PITCH_PROMOTION = [
   ),
   PitchModel(
     local: 4.5,
-    name: "Sân bóng 5 người Long Bình",
+    name: "Sân bóng 5 người Long",
     price: 130000,
     rate: 4.1,
     image:

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:sporttt/ui/tab_booking_pitch.dart';
 import 'package:intl/intl.dart';
+import 'package:sporttt/ui/tab_pitch_detail.dart';
 
 class Pitch extends StatelessWidget {
   Pitch({
@@ -35,21 +36,21 @@ class Pitch extends StatelessWidget {
       )),
       child: Neumorphic(
         // width: 252,
-        margin: EdgeInsets.all(16),
+        margin: EdgeInsets.only(left: 10, top: 10, bottom: 10),
         style: NeumorphicStyle(
           boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(20)),
-          depth: 5,
+          depth: 0,
+          border: NeumorphicBorder(width: 1),
           lightSource: LightSource.topLeft,
+          color: Colors.white,
         ),
 
         child: Column(
           children: [
             Neumorphic(
               margin: EdgeInsets.all(10),
-              // style: NeumorphicStyle(
-              // border: NeumorphicBorder(width: 1, color: Colors.black)),
               child: Container(
-                width: 250,
+                width: 170,
                 height: 77,
                 decoration: BoxDecoration(
                   image: DecorationImage(
@@ -71,13 +72,13 @@ class Pitch extends StatelessWidget {
                   color: Colors.black,
                 ),
                 textStyle: NeumorphicTextStyle(
-                    fontSize: 18, fontWeight: FontWeight.bold),
+                    fontSize: 14, fontWeight: FontWeight.bold),
               ),
             ),
             Row(children: [
               Icon(
                 Icons.location_on,
-                color: Colors.green[700],
+                color: Colors.red[700],
               ),
               NeumorphicText(
                 this.address + ' ~ ' + local.toString() + 'km',
@@ -85,8 +86,7 @@ class Pitch extends StatelessWidget {
                   depth: 0,
                   color: Colors.black,
                 ),
-                textStyle: NeumorphicTextStyle(
-                    fontSize: 14, fontWeight: FontWeight.w500),
+                textStyle: NeumorphicTextStyle(fontSize: 13),
               ),
             ]),
             if (promotion == 0)
@@ -94,11 +94,10 @@ class Pitch extends StatelessWidget {
                 children: [
                   Icon(
                     Icons.monetization_on,
-                    color: Colors.green[800],
+                    color: Colors.yellow[900],
                   ),
                   Text(
                     oCcy.format(this.price).toString() + ' VND/h',
-                    style: TextStyle(fontWeight: FontWeight.w500),
                   ),
                 ],
               ),
@@ -109,13 +108,13 @@ class Pitch extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.monetization_on,
-                        color: Colors.green[800],
+                        color: Colors.yellow[800],
                       ),
                       Text(
                         oCcy.format(this.price).toString() + ' VND/h',
                         style: TextStyle(
-                            decoration: TextDecoration.lineThrough,
-                            fontWeight: FontWeight.w500),
+                          decoration: TextDecoration.lineThrough,
+                        ),
                       ),
                     ],
                   ),
@@ -123,12 +122,13 @@ class Pitch extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.arrow_downward,
-                        color: Colors.red,
+                        color: Colors.red[900],
                       ),
                       Text(
                         oCcy.format(this.promotion).toString() + ' VND/h',
                         style: TextStyle(
-                            color: Colors.red, fontWeight: FontWeight.w900),
+                          color: Colors.red,
+                        ),
                       ),
                     ],
                   ),
@@ -138,11 +138,10 @@ class Pitch extends StatelessWidget {
               children: [
                 Text(
                   rate.toString(),
-                  style: TextStyle(fontWeight: FontWeight.w900),
                 ),
                 Icon(
                   Icons.star,
-                  color: Colors.yellow,
+                  color: Colors.yellow[600],
                 ),
               ],
             ),

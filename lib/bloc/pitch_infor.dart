@@ -20,10 +20,10 @@ class PitchInfor {
 
 List<PitchInfor> LIST_PITCH = [
   PitchInfor(
-      namePitch: 'Sân bóng 5 người - Tiến Phát',
-      address: 'Quận 9',
+      namePitch: 'Sân bóng Hải Âu',
+      address: '23/4 Lã Xuân Oai - Quận 9',
       local: 4.6,
-      price: 100000,
+      price: 110000,
       promotion: 0,
       rate: 3.5,
       image: "https://i.imgur.com/tpOU8bp.jpg"),

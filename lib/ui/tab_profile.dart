@@ -25,7 +25,6 @@ class _TabProfileScreenState extends State<TabProfileScreen> {
                         Row(
                           children: [
                             CircleAvatar(
-                              child: Text('Avatar'),
                               backgroundImage: NetworkImage(
                                   "https://i.imgur.com/zismATK.png"),
                               backgroundColor: Colors.lightGreen,

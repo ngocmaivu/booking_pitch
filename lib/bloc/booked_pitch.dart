@@ -1,20 +1,27 @@
 class PitchBooked {
-  String namePitch;
-  int time;
+  String namePitch, address;
+  int timeFrom, timeTo, price, total, count, type;
   bool booked;
 
-  PitchBooked({this.namePitch, this.time, this.booked});
+  PitchBooked({
+    this.namePitch,
+    this.timeFrom,
+    this.timeTo,
+    this.total,
+    this.price,
+    this.address,
+    this.booked,
+    this.count,
+    this.type,
+  });
 }
 
 List<PitchBooked> LIST_BOOKED = [
   PitchBooked(
-    namePitch: 'Sân bóng 5 người Hải Âu',
-    time: 7,
-    booked: true,
-  ),
-  PitchBooked(
-    namePitch: 'Sân bóng 5 người Hải Âu',
-    time: 12,
-    booked: true,
+    timeFrom: 0,
+    timeTo: 0,
+    count: 0,
+    type: 5,
+    price: 110000,
   ),
 ];

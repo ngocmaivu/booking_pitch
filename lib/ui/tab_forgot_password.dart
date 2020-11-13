@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 import 'login_screen.dart';
 
@@ -16,8 +17,8 @@ class _ForgotPassword extends State<ForgotPassword> {
       appBar: NeumorphicAppBar(
         title: Text('Quên mật Khẩu'),
       ),
-      body: Container(
-        margin: EdgeInsets.all(20),
+      body: SingleChildScrollView(
+        // margin: EdgeInsets.all(20),
         child: Column(
           children: [
             TextField(
@@ -53,6 +54,12 @@ class _ForgotPassword extends State<ForgotPassword> {
               borderRadius: BorderRadius.circular(30.0),
             ),
             onPressed: () {
+              Fluttertoast.showToast(
+                  msg: "Kiểm tra mail của bạn",
+                  timeInSecForIosWeb: 1,
+                  backgroundColor: Colors.green,
+                  textColor: Colors.white,
+                  fontSize: 16.0);
               Navigator.pop(
                   context,
                   CupertinoPageRoute(

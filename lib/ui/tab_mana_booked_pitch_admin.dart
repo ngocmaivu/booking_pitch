@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
+import 'package:sporttt/ui/tab_confirm_booked.dart';
 import 'package:sporttt/ui/tab_owner.dart';
+import 'package:sporttt/ui/tab_reason_cancel.dart';
 import 'package:sporttt/ui/tab_update_pitch.dart';
+import 'package:sporttt/utils/date_time_picker.dart';
 
 class BookingPitchManagement extends StatefulWidget {
   @override
@@ -16,7 +19,7 @@ int price = 110000;
 
 class _BookingPitchManagement extends State<BookingPitchManagement> {
   String value;
-  int index, _value = 1;
+  int index, _value = 1, _value1 = 1;
   List<bool> checked = [
     false,
     true,
@@ -56,6 +59,7 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
             children: <Widget>[
               _buildListPitch('https://i.imgur.com/tpOU8bp.jpg',
                   'Sân bóng Hải Âu', '23/4 Lã Xuân Oai - LT - Quận 9'),
+              _pickDate(),
               _buildTypeOfPitch(),
               _buildRow('Giá: ', oCcy.format(price).toString() + ' VND/h'),
               new Table(
@@ -135,6 +139,33 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
     }
 
     return rows;
+  }
+
+  Widget _pickDate() {
+    return Container(
+      margin: EdgeInsets.only(bottom: 10, top: 5),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              'Ngày',
+              style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 19),
+            ),
+            flex: 2,
+          ),
+          Expanded(
+            child: Container(
+              padding: EdgeInsets.only(right: 32),
+              child: DatePickerDemo(),
+            ),
+            flex: 4,
+          ),
+        ],
+      ),
+    );
   }
 
   Widget _buildTypeOfPitch() {
@@ -219,25 +250,15 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
             CupertinoDialogAction(
               child: Text('Từ chối'),
               onPressed: () {
-                // showDialog(
-                //     context: context,
-                //     builder: (BuildContext context) {
-                //       return CupertinoAlertDialog(
-                //         title: Text('Nhập lý do'),
-                //         content: Container(
-                //           height: 250,
-                //           width: 250,
-                //           child: TextFormField(),
-                //         ),
-                //         actions: [
-                //           CupertinoDialogAction(child: Text('Xác nhận'))
-                //         ],
-                //       );
-                //     });
                 Navigator.of(context).pop();
                 setState(() {
                   checked[id] = false;
                 });
+                Navigator.push(
+                    context,
+                    CupertinoPageRoute(
+                      builder: (context) => ReasonCancel(),
+                    ));
               },
             ),
             CupertinoDialogAction(

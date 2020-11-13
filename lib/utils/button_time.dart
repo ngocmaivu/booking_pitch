@@ -62,7 +62,7 @@ class _TimeButtonState extends State<TimeButton> {
             buttonColor = Colors.yellow[100];
             depth = 20;
             LIST_BOOKED[0].count--;
-            if (LIST_BOOKED[0].count == 0) {
+            if (LIST_BOOKED[0].count <= 0) {
               LIST_BOOKED[0].timeFrom = 0;
               LIST_BOOKED[0].timeTo = 0;
             }

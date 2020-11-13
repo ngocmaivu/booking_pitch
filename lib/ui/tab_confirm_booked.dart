@@ -4,6 +4,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:sporttt/bloc/booked_pitch.dart';
+import 'package:sporttt/ui/tab_booking_pitch.dart';
 import 'package:sporttt/ui/tab_home_screen.dart';
 import 'package:sporttt/utils/button_time.dart';
 
@@ -105,6 +106,9 @@ class _TabConfirm extends State<TabConfirm> {
                 ),
               ],
             ),
+            // SizedBox(
+            //   height: 20,
+            // ),
             Row(
               children: [
                 Icon(
@@ -125,6 +129,19 @@ class _TabConfirm extends State<TabConfirm> {
                 ),
                 Text(
                   ' Loại sân: ' + 'Sân ' + typePitch + ' người',
+                  style: TextStyle(
+                    fontSize: 18,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Icon(
+                  Icons.calendar_today,
+                ),
+                Text(
+                  ' Thời gian: ' + 'Thứ sáu - 13/11/2020s',
                   style: TextStyle(
                     fontSize: 18,
                   ),
@@ -327,19 +344,19 @@ class _TabConfirm extends State<TabConfirm> {
         // color: Colors.lightGreen,
         onPressed: () {
           setState(() {
-            LIST_BOOKED[0].count = 0;
-            LIST_BOOKED[0].timeFrom = 0;
-            LIST_BOOKED[0].timeTo = 0;
-            Fluttertoast.showToast(
-                msg: "Hủy đặt sân thành công",
-                timeInSecForIosWeb: 1,
-                backgroundColor: Colors.green,
-                textColor: Colors.white,
-                fontSize: 16.0);
-            Navigator.push(
+            // LIST_BOOKED[0].count = 0;
+            // LIST_BOOKED[0].timeFrom = 0;
+            // LIST_BOOKED[0].timeTo = 0;
+            // Fluttertoast.showToast(
+            //     msg: "Hủy đặt sân thành công",
+            //     timeInSecForIosWeb: 1,
+            //     backgroundColor: Colors.green,
+            //     textColor: Colors.white,
+            //     fontSize: 16.0);
+            Navigator.pop(
                 context,
                 CupertinoPageRoute(
-                  builder: (context) => TabHomeScreen(),
+                  builder: (context) => BookingPitch(),
                 ));
           });
         },

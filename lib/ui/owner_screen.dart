@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:sporttt/ui/tab_admin_noti_detail.dart';
 import 'package:sporttt/ui/tab_find_competitor.dart';
 import 'package:sporttt/ui/tab_owner.dart';
+import 'package:sporttt/ui/tab_profile.dart';
 import '../utils/constant.dart';
 
 class OwnerScreen extends StatefulWidget {
@@ -44,6 +45,18 @@ class _OwnerScreen extends State<OwnerScreen> {
               size: 36,
             ),
           ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.grey,
+              size: 26,
+            ),
+            activeIcon: Icon(
+              Icons.person,
+              color: Colors.lightGreen,
+              size: 36,
+            ),
+          ),
         ],
         activeColor: Colors.black,
         inactiveColor: Colors.grey,
@@ -56,6 +69,9 @@ class _OwnerScreen extends State<OwnerScreen> {
             break;
           case 1:
             returnValue = _buildTabView(TabNotificationAdmin());
+            break;
+          case 2:
+            returnValue = _buildTabView(TabProfileScreen());
             break;
         }
         return returnValue;

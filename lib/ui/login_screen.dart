@@ -1,8 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:sporttt/bloc/admin.dart';
 import 'package:sporttt/bloc/user.dart';
 import 'package:sporttt/ui/owner_screen.dart';
+import 'package:sporttt/ui/tab_forgot_password.dart';
+import 'package:sporttt/ui/tab_regist.dart';
 
 import 'home_screen.dart';
 
@@ -38,8 +41,8 @@ class _LognPageState extends State<LognPage> {
         },
         decoration: InputDecoration(
             prefixIcon: Icon(
-              Icons.phone,
-              color: Colors.green[200],
+              Icons.drive_file_rename_outline,
+              color: Colors.green,
             ),
             labelText: 'Tên đăng nhập'),
       ),
@@ -60,7 +63,7 @@ class _LognPageState extends State<LognPage> {
         decoration: InputDecoration(
             prefixIcon: Icon(
               Icons.lock,
-              color: Colors.green[200],
+              color: Colors.green,
             ),
             labelText: 'Mật khẩu'),
       ),
@@ -92,28 +95,64 @@ class _LognPageState extends State<LognPage> {
         Container(
           height: 1.4 * (MediaQuery.of(context).size.height / 25),
           width: 5 * (MediaQuery.of(context).size.width / 15),
-          margin: EdgeInsets.only(bottom: 20),
+          margin: EdgeInsets.only(bottom: 10, left: 3, right: 3),
           child: RaisedButton(
             elevation: 5.0,
-            color: Colors.green[200],
+            color: Colors.green,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30.0),
             ),
             onPressed: () {
+              FocusScope.of(context).unfocus();
               if (checkLogin() == 1) {
-                Navigator.of(context).push(MaterialPageRoute(
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => HomeScreen(),
                 ));
                 LIST_USER.add(User(username: 'a', password: 'a'));
                 print(LIST_USER.toString());
               } else if (checkLogin() == 2) {
-                Navigator.of(context).push(MaterialPageRoute(
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => OwnerScreen(),
                 ));
               }
             },
             child: Text(
               "Đăng nhập",
+              style: TextStyle(
+                color: Colors.white,
+                letterSpacing: 1.5,
+                fontSize: MediaQuery.of(context).size.height / 60,
+              ),
+            ),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget _buildRegisButton() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Container(
+          height: 1.4 * (MediaQuery.of(context).size.height / 25),
+          width: 5 * (MediaQuery.of(context).size.width / 15),
+          margin: EdgeInsets.only(bottom: 10, right: 2, left: 3),
+          child: RaisedButton(
+            elevation: 5.0,
+            color: Colors.blueAccent,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  CupertinoPageRoute(
+                    builder: (context) => Regist(),
+                  ));
+            },
+            child: Text(
+              "Đăng kí",
               style: TextStyle(
                 color: Colors.white,
                 letterSpacing: 1.5,
@@ -160,10 +199,27 @@ class _LognPageState extends State<LognPage> {
                 ),
                 _buildPhoneNumberRow(),
                 _buildPasswordRow(),
-                SizedBox(
-                  height: 20,
+                InkWell(
+                  onTap: () => Navigator.push(
+                      context,
+                      CupertinoPageRoute(
+                        builder: (context) => ForgotPassword(),
+                      )),
+                  child: Text(
+                    "Quên mật khẩu?",
+                    style: TextStyle(color: Colors.green),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
-                _buildLoginButton(),
+                SizedBox(
+                  height: 30,
+                ),
+                Row(
+                  children: [
+                    _buildLoginButton(),
+                    _buildRegisButton(),
+                  ],
+                ),
               ],
             ),
           ),
@@ -185,7 +241,7 @@ class _LognPageState extends State<LognPage> {
               style: TextStyle(
                 fontSize: MediaQuery.of(context).size.height / 25,
                 fontWeight: FontWeight.bold,
-                color: Colors.green[200],
+                color: Colors.green,
               ),
             ),
           ),

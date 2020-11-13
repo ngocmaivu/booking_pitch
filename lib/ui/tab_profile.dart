@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'login_screen.dart';
 
 class TabProfileScreen extends StatefulWidget {
   @override
@@ -73,6 +76,13 @@ class _TabProfileScreenState extends State<TabProfileScreen> {
                   _buildButton(
                     title: 'Đăng xuất',
                     iconData: Icons.assignment_return,
+                    function: () {
+                      Navigator.pushReplacement(
+                          context,
+                          CupertinoPageRoute(
+                            builder: (context) => LognPage(),
+                          ));
+                    },
                   ),
                   SizedBox(
                     height: 16,
@@ -105,18 +115,21 @@ class _TabProfileScreenState extends State<TabProfileScreen> {
     String title,
     Function function,
   }) {
-    return Card(
-      margin: EdgeInsets.symmetric(
-        horizontal: 16,
-      ),
-      child: ListTile(
-        leading: Icon(
-          iconData,
+    return InkWell(
+      onTap: function,
+      child: Card(
+        margin: EdgeInsets.symmetric(
+          horizontal: 16,
         ),
-        title: Text(title),
-        trailing: Icon(Icons.arrow_forward_ios),
+        child: ListTile(
+          leading: Icon(
+            iconData,
+          ),
+          title: Text(title),
+          trailing: Icon(Icons.arrow_forward_ios),
+        ),
+        // shape: Border.all(color: Colors.black),
       ),
-      // shape: Border.all(color: Colors.black),
     );
   }
 }

@@ -222,6 +222,21 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
             CupertinoDialogAction(
               child: Text('Từ chối'),
               onPressed: () {
+                // showDialog(
+                //     context: context,
+                //     builder: (BuildContext context) {
+                //       return CupertinoAlertDialog(
+                //         title: Text('Nhập lý do'),
+                //         content: Container(
+                //           height: 250,
+                //           width: 250,
+                //           child: TextFormField(),
+                //         ),
+                //         actions: [
+                //           CupertinoDialogAction(child: Text('Xác nhận'))
+                //         ],
+                //       );
+                //     });
                 Navigator.of(context).pop();
                 setState(() {
                   checked[id] = false;

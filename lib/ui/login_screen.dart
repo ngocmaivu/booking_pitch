@@ -105,13 +105,13 @@ class _LognPageState extends State<LognPage> {
             onPressed: () {
               FocusScope.of(context).unfocus();
               if (checkLogin() == 1) {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                Navigator.of(context).pushReplacement(CupertinoPageRoute(
                   builder: (context) => HomeScreen(),
                 ));
                 LIST_USER.add(User(username: 'a', password: 'a'));
                 print(LIST_USER.toString());
               } else if (checkLogin() == 2) {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                Navigator.of(context).pushReplacement(CupertinoPageRoute(
                   builder: (context) => OwnerScreen(),
                 ));
               }
@@ -235,7 +235,8 @@ class _LognPageState extends State<LognPage> {
       body: Stack(
         children: <Widget>[
           Container(
-            padding: const EdgeInsets.fromLTRB(65, 70, 14, 30),
+            padding: const EdgeInsets.symmetric(vertical: 32),
+            alignment: Alignment.topCenter,
             child: Text(
               'ĐẶT SÂN BÓNG ĐÁ',
               style: TextStyle(

@@ -37,7 +37,7 @@ class _DatePickerDemoState extends State<DatePickerDemo> {
   Widget build(BuildContext context) {
     return NeumorphicButton(
       style: NeumorphicStyle(
-        depth: 2,
+        depth: 20,
         border: NeumorphicBorder(width: 1),
       ),
       onPressed: () => _selectDate(context),

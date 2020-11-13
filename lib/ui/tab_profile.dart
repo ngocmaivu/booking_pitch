@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'login_screen.dart';
 
 class TabProfileScreen extends StatefulWidget {
+  final BuildContext homeContext;
+  TabProfileScreen({@required this.homeContext});
   @override
   _TabProfileScreenState createState() => _TabProfileScreenState();
 }
@@ -75,10 +77,10 @@ class _TabProfileScreenState extends State<TabProfileScreen> {
                   ),
                   _buildButton(
                     title: 'Đăng xuất',
-                    iconData: Icons.assignment_return,
+                    iconData: Icons.logout,
                     function: () {
                       Navigator.pushReplacement(
-                          context,
+                          widget.homeContext,
                           CupertinoPageRoute(
                             builder: (context) => LognPage(),
                           ));
@@ -115,21 +117,20 @@ class _TabProfileScreenState extends State<TabProfileScreen> {
     String title,
     Function function,
   }) {
-    return InkWell(
-      onTap: function,
-      child: Card(
-        margin: EdgeInsets.symmetric(
-          horizontal: 16,
-        ),
-        child: ListTile(
-          leading: Icon(
-            iconData,
-          ),
-          title: Text(title),
-          trailing: Icon(Icons.arrow_forward_ios),
-        ),
-        // shape: Border.all(color: Colors.black),
+    return Card(
+      margin: EdgeInsets.symmetric(
+        horizontal: 16,
       ),
+
+      child: ListTile(
+        leading: Icon(
+          iconData,
+        ),
+        title: Text(title),
+        trailing: Icon(Icons.arrow_forward_ios),
+        onTap: function,
+      ),
+      // shape: Border.all(color: Colors.black),
     );
   }
 }

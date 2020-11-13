@@ -172,7 +172,7 @@ class _BookingPitch extends State<BookingPitch> {
         children: [
           Expanded(
             child: Text(
-              'Chọn ngày    ',
+              'Chọn ngày',
               style: TextStyle(
                   color: Colors.black,
                   fontWeight: FontWeight.bold,
@@ -182,7 +182,7 @@ class _BookingPitch extends State<BookingPitch> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(right: 130),
+              padding: EdgeInsets.only(right: 32),
               child: DatePickerDemo(),
             ),
             flex: 4,
@@ -279,10 +279,10 @@ class _BookingPitch extends State<BookingPitch> {
             child: Neumorphic(
               padding: EdgeInsets.only(left: 10),
               margin: EdgeInsets.only(
-                right: 130,
+                right: 32,
               ),
               style: NeumorphicStyle(
-                depth: 2,
+                depth: 20,
                 border: NeumorphicBorder(width: 1),
               ),
               child: DropdownButtonFormField(
@@ -292,7 +292,9 @@ class _BookingPitch extends State<BookingPitch> {
                   DropdownMenuItem(
                     child: Text(
                       "Sân 5 người",
-                      style: TextStyle(fontSize: 16),
+                      style: TextStyle(
+                        fontSize: 16,
+                      ),
                     ),
                     value: 1,
                   ),

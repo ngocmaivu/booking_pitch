@@ -78,15 +78,11 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
                 children: [
                   Expanded(
                     child: updatePitch(),
-                    flex: 2,
-                  ),
-                  Expanded(
-                    child: Text(''),
                     flex: 1,
                   ),
                   Expanded(
                     child: deletePitch(),
-                    flex: 2,
+                    flex: 1,
                   )
                 ],
               ),
@@ -157,10 +153,11 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
             child: Neumorphic(
               padding: EdgeInsets.only(left: 10),
               margin: EdgeInsets.only(
-                right: 110,
+                right: 32,
               ),
               style: NeumorphicStyle(
-                depth: 2,
+                depth: 20,
+                intensity: 1,
                 border: NeumorphicBorder(width: 1),
               ),
               child: DropdownButtonFormField(
@@ -269,9 +266,9 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
         },
         style: NeumorphicStyle(
             depth: 0, color: color, border: NeumorphicBorder(width: 1)),
-        padding: EdgeInsets.all(6),
+        padding: EdgeInsets.all(12),
         child: Container(
-          padding: EdgeInsets.all(10.0),
+          // padding: EdgeInsets.all(10.0),
           child: Text(
             time.toString() + 'h' + '-' + (time + 1).toString() + 'h',
             style: TextStyle(
@@ -311,88 +308,80 @@ class _BookingPitchManagement extends State<BookingPitchManagement> {
   }
 
   Widget deletePitch() {
-    return Neumorphic(
+    return NeumorphicButton(
+      margin: EdgeInsets.symmetric(
+        horizontal: 16,
+      ),
       style: NeumorphicStyle(
-        shape: NeumorphicShape.concave,
-        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-        depth: 1,
         color: Colors.green,
-        lightSource: LightSource.topLeft,
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
       ),
-      child: NeumorphicButton(
-        style: NeumorphicStyle(color: Colors.green),
-        child: Text(
-          'XÓA SÂN',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20),
-        ),
-        // color: Colors.lightGreen,
-        onPressed: () {
-          setState(() {
-            if (checked.contains(true)) {
-              Fluttertoast.showToast(
-                  msg: "Sân đang có người đặt",
-                  timeInSecForIosWeb: 2,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-            } else {
-              Fluttertoast.showToast(
-                  msg: "Yêu cầu xóa sân đang chờ duyệt",
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.green,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-              Navigator.pop(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => PitchManagement(),
-                ),
-              );
-            }
-          });
-        },
+      child: Text(
+        'XÓA SÂN',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 20),
       ),
+      // color: Colors.lightGreen,
+      onPressed: () {
+        setState(() {
+          if (checked.contains(true)) {
+            Fluttertoast.showToast(
+                msg: "Sân đang có người đặt",
+                timeInSecForIosWeb: 2,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          } else {
+            Fluttertoast.showToast(
+                msg: "Yêu cầu xóa sân đang chờ duyệt",
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.green,
+                textColor: Colors.white,
+                fontSize: 16.0);
+            Navigator.pop(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => PitchManagement(),
+              ),
+            );
+          }
+        });
+      },
     );
   }
 
   Widget updatePitch() {
-    return Neumorphic(
+    return NeumorphicButton(
+      margin: EdgeInsets.symmetric(horizontal: 16),
       style: NeumorphicStyle(
-        shape: NeumorphicShape.concave,
-        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
-        depth: 1,
         color: Colors.green,
-        lightSource: LightSource.topLeft,
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(50)),
       ),
-      child: NeumorphicButton(
-        style: NeumorphicStyle(color: Colors.green),
-        child: Text(
-          'CHỈNH SỬA',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20),
-        ),
-        // color: Colors.lightGreen,
-        onPressed: () {
-          setState(() {
-            if (checked.contains(true)) {
-              Fluttertoast.showToast(
-                  msg: "Sân đang có người đặt",
-                  timeInSecForIosWeb: 1,
-                  backgroundColor: Colors.red,
-                  textColor: Colors.white,
-                  fontSize: 16.0);
-            } else {
-              Navigator.push(
-                context,
-                CupertinoPageRoute(
-                  builder: (context) => TabUpdatePitch(),
-                ),
-              );
-            }
-          });
-        },
+      child: Text(
+        'CHỈNH SỬA',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 20),
       ),
+      // color: Colors.lightGreen,
+      onPressed: () {
+        setState(() {
+          if (checked.contains(true)) {
+            Fluttertoast.showToast(
+                msg: "Sân đang có người đặt",
+                timeInSecForIosWeb: 1,
+                backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          } else {
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => TabUpdatePitch(),
+              ),
+            );
+          }
+        });
+      },
     );
   }
 }

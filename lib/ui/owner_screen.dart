@@ -71,7 +71,9 @@ class _OwnerScreen extends State<OwnerScreen> {
             returnValue = _buildTabView(TabNotificationAdmin());
             break;
           case 2:
-            returnValue = _buildTabView(TabProfileScreen());
+            returnValue = _buildTabView(TabProfileScreen(
+              homeContext: context,
+            ));
             break;
         }
         return returnValue;

@@ -142,7 +142,7 @@ class _PitchManagement extends State<PitchManagement> {
                 Expanded(
                   flex: 2,
                   child: Container(
-                    child: Icon(Icons.expand_more),
+                    child: Icon(Icons.arrow_forward_ios),
                   ),
                 ),
               ],

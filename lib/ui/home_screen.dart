@@ -17,44 +17,97 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  CupertinoTabController _tabController;
   @override
-  Widget build(BuildContext context) {
-    return _buildHomeScreen();
+  void initState() {
+    _tabController = CupertinoTabController(initialIndex: 0);
+    super.initState();
   }
 
-  Widget _buildHomeScreen() {
-    return CupertinoTabScaffold(
-      tabBar: CupertinoTabBar(
-        items: BOTTOM_NAVIGATION_BAR_ITEMS,
-        activeColor: Colors.black,
-        inactiveColor: Colors.grey,
-      ),
-      tabBuilder: (context, index) {
-        CupertinoTabView returnValue;
-        switch (index) {
-          case 0:
-            returnValue = _buildTabView(TabHomeScreen());
-            break;
-          case 1:
-            returnValue = _buildTabView(TabFindCompetitor());
-            break;
-          case 2:
-            returnValue = _buildTabView(TabCreateCLB());
-            break;
-          case 3:
-            returnValue = _buildTabView(TabNotificationScreen());
-            break;
-          case 4:
-            returnValue = _buildTabView(TabProfileScreen());
-            break;
-        }
-        return returnValue;
+  // Used to handle Android back button navigation with tab specific navigator.
+  final GlobalKey<NavigatorState> firstTabNavKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> secondTabNavKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> thirdTabNavKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> fourthTabNavKey = GlobalKey<NavigatorState>();
+  final GlobalKey<NavigatorState> fifthTabNavKey = GlobalKey<NavigatorState>();
+  GlobalKey<NavigatorState> _currentNavigatorKey() {
+    switch (_tabController.index) {
+      case 0:
+        return firstTabNavKey;
+      case 1:
+        return secondTabNavKey;
+      case 2:
+        return thirdTabNavKey;
+      case 3:
+        return fourthTabNavKey;
+      case 4:
+        return fifthTabNavKey;
+    }
+    return firstTabNavKey;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return WillPopScope(
+      onWillPop: () async {
+        final isFirstRouteInCurrentTab =
+            !await _currentNavigatorKey().currentState.maybePop();
+        return isFirstRouteInCurrentTab;
       },
+      child: CupertinoTabScaffold(
+        tabBar: CupertinoTabBar(
+          items: BOTTOM_NAVIGATION_BAR_ITEMS,
+          activeColor: Colors.black,
+          inactiveColor: Colors.grey,
+        ),
+        tabBuilder: (context, index) {
+          CupertinoTabView returnValue;
+          switch (index) {
+            case 0:
+              returnValue = _buildTabView(
+                TabHomeScreen(),
+                firstTabNavKey,
+              );
+              break;
+            case 1:
+              returnValue = _buildTabView(
+                TabFindCompetitor(),
+                secondTabNavKey,
+              );
+              break;
+            case 2:
+              returnValue = _buildTabView(
+                TabCreateCLB(),
+                thirdTabNavKey,
+              );
+              break;
+            case 3:
+              returnValue = _buildTabView(
+                TabNotificationScreen(),
+                fourthTabNavKey,
+              );
+              break;
+            case 4:
+              returnValue = _buildTabView(
+                TabProfileScreen(
+                  homeContext: context,
+                ),
+                fifthTabNavKey,
+              );
+              break;
+          }
+          return returnValue;
+        },
+      ),
     );
   }
 
-  CupertinoTabView _buildTabView(Widget tabView) {
+  CupertinoTabView _buildTabView(
+    Widget tabView,
+    GlobalKey<NavigatorState> navKey,
+  ) {
     return CupertinoTabView(
+      navigatorKey: navKey,
       builder: (context) => tabView,
     );
   }
